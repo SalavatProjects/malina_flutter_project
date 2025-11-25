@@ -1,0 +1,20 @@
+targets:
+  $default:
+    builders:
+      flutter_gen_runner:
+        options:
+          output: lib/gen/
+          line_length: 120
+          integrations:
+            flutter_svg: true
+
+      slang_build_runner:
+        options:
+          base_locale: ru
+          input_directory: lib/core/common/locale/
+          input_file_pattern: .json
+          output_directory: lib/gen/
+          output_file_name: strings.g.dart
+          flutter_integration: true
+          getter_method:
+            style: camel_case
