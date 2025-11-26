@@ -17,7 +17,15 @@
   },
   "auth" : {
     "mail" : "почта",
-    "password" : "пароль"
+    "password" : "пароль",
+    "errors": {
+      "userNotFound": "Пользователь не найден",
+      "invalidEmailOrPassword": "Email или пароль неверны",
+      "tooManyAttempts": "Слишком много попыток входа",
+      "unknown": "Неизвестная ошибка",
+
+      "invalidEmail": "Не правильно введен email"
+    }
   },
   "bottom_nav_bar_content" : {
     "feed": "лента",

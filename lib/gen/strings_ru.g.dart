@@ -123,6 +123,8 @@ class TranslationsAuthRu {
 
 	/// ru: 'пароль'
 	String get password => 'пароль';
+
+	late final TranslationsAuthErrorsRu errors = TranslationsAuthErrorsRu._(_root);
 }
 
 // Path: bottom_nav_bar_content
@@ -163,6 +165,30 @@ class TranslationsFeedRu {
 	late final TranslationsFeedFoodRu food = TranslationsFeedFoodRu._(_root);
 	late final TranslationsFeedBeautyRu beauty = TranslationsFeedBeautyRu._(_root);
 	late final TranslationsFeedSoonInMalinaRu soon_in_malina = TranslationsFeedSoonInMalinaRu._(_root);
+}
+
+// Path: auth.errors
+class TranslationsAuthErrorsRu {
+	TranslationsAuthErrorsRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ru: 'Пользователь не найден'
+	String get userNotFound => 'Пользователь не найден';
+
+	/// ru: 'Email или пароль неверны'
+	String get invalidEmailOrPassword => 'Email или пароль неверны';
+
+	/// ru: 'Слишком много попыток входа'
+	String get tooManyAttempts => 'Слишком много попыток входа';
+
+	/// ru: 'Неизвестная ошибка'
+	String get unknown => 'Неизвестная ошибка';
+
+	/// ru: 'Не правильно введен email'
+	String get invalidEmail => 'Не правильно введен email';
 }
 
 // Path: feed.food
@@ -237,6 +263,11 @@ extension on Translations {
 			'action.sign_out' => 'выйти',
 			'auth.mail' => 'почта',
 			'auth.password' => 'пароль',
+			'auth.errors.userNotFound' => 'Пользователь не найден',
+			'auth.errors.invalidEmailOrPassword' => 'Email или пароль неверны',
+			'auth.errors.tooManyAttempts' => 'Слишком много попыток входа',
+			'auth.errors.unknown' => 'Неизвестная ошибка',
+			'auth.errors.invalidEmail' => 'Не правильно введен email',
 			'bottom_nav_bar_content.feed' => 'лента',
 			'bottom_nav_bar_content.favorites' => 'избранное',
 			'bottom_nav_bar_content.profile' => 'профиль',

@@ -1,0 +1,4 @@
+enum ProductCategory {
+  food,
+  beauty,
+}

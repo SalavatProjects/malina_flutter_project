@@ -29,6 +29,9 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Roboto-SemiBold.ttf
   String get robotoSemiBold => 'assets/fonts/Roboto-SemiBold.ttf';
 
+  /// File path: assets/fonts/WixMadeforDisplay-Bold.ttf
+  String get wixMadeforDisplayBold => 'assets/fonts/WixMadeforDisplay-Bold.ttf';
+
   /// File path: assets/fonts/WixMadeforDisplay-Medium.ttf
   String get wixMadeforDisplayMedium => 'assets/fonts/WixMadeforDisplay-Medium.ttf';
 
@@ -41,6 +44,7 @@ class $AssetsFontsGen {
     robotoMedium,
     robotoRegular,
     robotoSemiBold,
+    wixMadeforDisplayBold,
     wixMadeforDisplayMedium,
     wixMadeforDisplayRegular,
   ];
