@@ -38,7 +38,7 @@ ProductModel _$ProductModelFromJson(
 /// @nodoc
 mixin _$ProductModel implements DiagnosticableTreeMixin {
 
- int get id; String get category; String get subcategory; String get name; double get price; String? get imagePath;
+ String get id; String get category; String get subcategory; String get name; double get price; String? get imagePath;
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -77,7 +77,7 @@ abstract mixin class $ProductModelCopyWith<$Res>  {
   factory $ProductModelCopyWith(ProductModel value, $Res Function(ProductModel) _then) = _$ProductModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String category, String subcategory, String name, double price, String? imagePath
+ String id, String category, String subcategory, String name, double price, String? imagePath
 });
 
 
@@ -97,7 +97,7 @@ class _$ProductModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ return beauty(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case FoodProductModel() when food != null:
 return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
@@ -209,7 +209,7 @@ return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)  food,required TResult Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath)  beauty,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)  food,required TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)  beauty,}) {final _that = this;
 switch (_that) {
 case FoodProductModel():
 return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel():
@@ -227,7 +227,7 @@ return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult? Function( int id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult? Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,}) {final _that = this;
 switch (_that) {
 case FoodProductModel() when food != null:
 return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
@@ -246,7 +246,7 @@ class FoodProductModel with DiagnosticableTreeMixin implements ProductModel {
   const FoodProductModel({required this.id, this.category = AppConstants.productFood, required this.subcategory, required this.name, required this.price, this.imagePath, final  List<String> additivies = const [], final  String? $type}): _additivies = additivies,$type = $type ?? 'food';
   factory FoodProductModel.fromJson(Map<String, dynamic> json) => _$FoodProductModelFromJson(json);
 
-@override final  int id;
+@override final  String id;
 @override@JsonKey() final  String category;
 @override final  String subcategory;
 @override final  String name;
@@ -303,7 +303,7 @@ abstract mixin class $FoodProductModelCopyWith<$Res> implements $ProductModelCop
   factory $FoodProductModelCopyWith(FoodProductModel value, $Res Function(FoodProductModel) _then) = _$FoodProductModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String category, String subcategory, String name, double price, String? imagePath, List<String> additivies
+ String id, String category, String subcategory, String name, double price, String? imagePath, List<String> additivies
 });
 
 
@@ -323,7 +323,7 @@ class _$FoodProductModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additivies = null,}) {
   return _then(FoodProductModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
@@ -343,7 +343,7 @@ class BeautyProductModel with DiagnosticableTreeMixin implements ProductModel {
   const BeautyProductModel({required this.id, this.category = AppConstants.productBeauty, required this.subcategory, required this.name, required this.price, this.imagePath, final  String? $type}): $type = $type ?? 'beauty';
   factory BeautyProductModel.fromJson(Map<String, dynamic> json) => _$BeautyProductModelFromJson(json);
 
-@override final  int id;
+@override final  String id;
 @override@JsonKey() final  String category;
 @override final  String subcategory;
 @override final  String name;
@@ -393,7 +393,7 @@ abstract mixin class $BeautyProductModelCopyWith<$Res> implements $ProductModelC
   factory $BeautyProductModelCopyWith(BeautyProductModel value, $Res Function(BeautyProductModel) _then) = _$BeautyProductModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String category, String subcategory, String name, double price, String? imagePath
+ String id, String category, String subcategory, String name, double price, String? imagePath
 });
 
 
@@ -413,7 +413,7 @@ class _$BeautyProductModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,}) {
   return _then(BeautyProductModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable

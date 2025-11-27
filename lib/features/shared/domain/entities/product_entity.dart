@@ -7,7 +7,7 @@ part 'product_entity.freezed.dart';
 @freezed
 sealed class ProductEntity with _$ProductEntity {
   const factory ProductEntity({
-    required int id,
+    required String id,
     required ProductCategory category,
     required String subcategory,
     required String name,

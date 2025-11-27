@@ -3,17 +3,23 @@ import 'package:go_router/go_router.dart';
 
 enum AppRoutes {
   // auth
-  login,
-  register,
+  login("/login"),
+  register("/register"),
 
-  app,
+  home("/home"), // bottom_nav_bar,
   // app routes
-  feed,
-  profile,
-  cart;
+  feed("/home/feed"),
+  favorites("/home/favorites"),
+  profile("/home/profile"),
+  cart("/home/profile"),
 
-  String get path => "/$name";
-  String get appPath => '/${AppRoutes.app.name}/$name';
+  qrScanPage("/qrScanPage");
+
+  final String path;
+  const AppRoutes(this.path);
+
+  // String get path => "/$name";
+  // String get appPath => '/${AppRoutes.app.name}/$name';
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();

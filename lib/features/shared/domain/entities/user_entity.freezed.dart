@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserEntity {
 
- int get id; String get email; String get passwordHash; int get loginAttempts;
+ String get id; String get email; String get passwordHash; List<CartItemEntity> get cartItems; int get loginAttempts;
 /// Create a copy of UserEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $UserEntityCopyWith<UserEntity> get copyWith => _$UserEntityCopyWithImpl<UserEnt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,email,passwordHash,loginAttempts);
+int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(cartItems),loginAttempts);
 
 @override
 String toString() {
-  return 'UserEntity(id: $id, email: $email, passwordHash: $passwordHash, loginAttempts: $loginAttempts)';
+  return 'UserEntity(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttempts: $loginAttempts)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $UserEntityCopyWith<$Res>  {
   factory $UserEntityCopyWith(UserEntity value, $Res Function(UserEntity) _then) = _$UserEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, String email, String passwordHash, int loginAttempts
+ String id, String email, String passwordHash, List<CartItemEntity> cartItems, int loginAttempts
 });
 
 
@@ -62,12 +62,13 @@ class _$UserEntityCopyWithImpl<$Res>
 
 /// Create a copy of UserEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? loginAttempts = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttempts = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,passwordHash: null == passwordHash ? _self.passwordHash : passwordHash // ignore: cast_nullable_to_non_nullable
-as String,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
+as String,cartItems: null == cartItems ? _self.cartItems : cartItems // ignore: cast_nullable_to_non_nullable
+as List<CartItemEntity>,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String email,  String passwordHash,  int loginAttempts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemEntity> cartItems,  int loginAttempts)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserEntity() when $default != null:
-return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);case _:
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String email,  String passwordHash,  int loginAttempts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemEntity> cartItems,  int loginAttempts)  $default,) {final _that = this;
 switch (_that) {
 case _UserEntity():
-return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);}
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -188,10 +189,10 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String email,  String passwordHash,  int loginAttempts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String passwordHash,  List<CartItemEntity> cartItems,  int loginAttempts)?  $default,) {final _that = this;
 switch (_that) {
 case _UserEntity() when $default != null:
-return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);case _:
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);case _:
   return null;
 
 }
@@ -203,12 +204,19 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.loginAttempts);cas
 
 
 class _UserEntity implements UserEntity {
-  const _UserEntity({required this.id, required this.email, required this.passwordHash, required this.loginAttempts});
+  const _UserEntity({required this.id, required this.email, required this.passwordHash, required final  List<CartItemEntity> cartItems, required this.loginAttempts}): _cartItems = cartItems;
   
 
-@override final  int id;
+@override final  String id;
 @override final  String email;
 @override final  String passwordHash;
+ final  List<CartItemEntity> _cartItems;
+@override List<CartItemEntity> get cartItems {
+  if (_cartItems is EqualUnmodifiableListView) return _cartItems;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_cartItems);
+}
+
 @override final  int loginAttempts;
 
 /// Create a copy of UserEntity
@@ -221,16 +229,16 @@ _$UserEntityCopyWith<_UserEntity> get copyWith => __$UserEntityCopyWithImpl<_Use
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,email,passwordHash,loginAttempts);
+int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(_cartItems),loginAttempts);
 
 @override
 String toString() {
-  return 'UserEntity(id: $id, email: $email, passwordHash: $passwordHash, loginAttempts: $loginAttempts)';
+  return 'UserEntity(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttempts: $loginAttempts)';
 }
 
 
@@ -241,7 +249,7 @@ abstract mixin class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$
   factory _$UserEntityCopyWith(_UserEntity value, $Res Function(_UserEntity) _then) = __$UserEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String email, String passwordHash, int loginAttempts
+ String id, String email, String passwordHash, List<CartItemEntity> cartItems, int loginAttempts
 });
 
 
@@ -258,12 +266,13 @@ class __$UserEntityCopyWithImpl<$Res>
 
 /// Create a copy of UserEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? loginAttempts = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttempts = null,}) {
   return _then(_UserEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,passwordHash: null == passwordHash ? _self.passwordHash : passwordHash // ignore: cast_nullable_to_non_nullable
-as String,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
+as String,cartItems: null == cartItems ? _self._cartItems : cartItems // ignore: cast_nullable_to_non_nullable
+as List<CartItemEntity>,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

@@ -8,7 +8,7 @@ part of 'product_model.dart';
 
 FoodProductModel _$FoodProductModelFromJson(Map<String, dynamic> json) =>
     FoodProductModel(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       category: json['category'] as String? ?? AppConstants.productFood,
       subcategory: json['subcategory'] as String,
       name: json['name'] as String,
@@ -36,7 +36,7 @@ Map<String, dynamic> _$FoodProductModelToJson(FoodProductModel instance) =>
 
 BeautyProductModel _$BeautyProductModelFromJson(Map<String, dynamic> json) =>
     BeautyProductModel(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       category: json['category'] as String? ?? AppConstants.productBeauty,
       subcategory: json['subcategory'] as String,
       name: json['name'] as String,

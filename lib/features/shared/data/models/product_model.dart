@@ -8,7 +8,7 @@ part 'product_model.g.dart';
 @Freezed(unionKey: 'type')
 sealed class ProductModel with _$ProductModel {
   const factory ProductModel.food({
-    required int id,
+    required String id,
     @Default(AppConstants.productFood) String category,
     required String subcategory,
     required String name,
@@ -18,7 +18,7 @@ sealed class ProductModel with _$ProductModel {
 }) = FoodProductModel;
 
   const factory ProductModel.beauty({
-    required int id,
+    required String id,
     @Default(AppConstants.productBeauty) String category,
     required String subcategory,
     required String name,

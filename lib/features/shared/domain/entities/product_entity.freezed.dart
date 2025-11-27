@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductEntity implements DiagnosticableTreeMixin {
 
- int get id; ProductCategory get category; String get subcategory; String get name; double get price; String? get imagePath; List<String>? get additives;
+ String get id; ProductCategory get category; String get subcategory; String get name; double get price; String? get imagePath; List<String>? get additives;
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -51,7 +51,7 @@ abstract mixin class $ProductEntityCopyWith<$Res>  {
   factory $ProductEntityCopyWith(ProductEntity value, $Res Function(ProductEntity) _then) = _$ProductEntityCopyWithImpl;
 @useResult
 $Res call({
- int id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
+ String id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
 });
 
 
@@ -71,7 +71,7 @@ class _$ProductEntityCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as ProductCategory,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
 return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);case _:
@@ -180,7 +180,7 @@ return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity():
 return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);}
@@ -197,7 +197,7 @@ return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
 return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);case _:
@@ -215,7 +215,7 @@ class _ProductEntity with DiagnosticableTreeMixin implements ProductEntity {
   const _ProductEntity({required this.id, required this.category, required this.subcategory, required this.name, required this.price, this.imagePath, final  List<String>? additives}): _additives = additives;
   
 
-@override final  int id;
+@override final  String id;
 @override final  ProductCategory category;
 @override final  String subcategory;
 @override final  String name;
@@ -267,7 +267,7 @@ abstract mixin class _$ProductEntityCopyWith<$Res> implements $ProductEntityCopy
   factory _$ProductEntityCopyWith(_ProductEntity value, $Res Function(_ProductEntity) _then) = __$ProductEntityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
+ String id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
 });
 
 
@@ -287,7 +287,7 @@ class __$ProductEntityCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
   return _then(_ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as ProductCategory,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable

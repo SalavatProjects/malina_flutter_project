@@ -3,12 +3,17 @@ import 'package:malina_flutter_project/features/auth/data/datasources/user_local
 import 'package:malina_flutter_project/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initDependencies() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  getIt.registerSingleton<SharedPreferences>(prefs);
+
   getIt.registerLazySingleton<UserLocalDataSource>(
-      () => UserLocalDataSource(),
+      () => UserLocalDataSource(getIt<SharedPreferences>()),
   );
   
   getIt.registerLazySingleton<AuthRepository>(
