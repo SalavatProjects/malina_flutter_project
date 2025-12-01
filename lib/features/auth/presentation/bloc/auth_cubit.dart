@@ -11,6 +11,17 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit(this.authRepository) : super(const AuthState.initial());
 
+  Future<void> checkAuthStatus() async {
+    final bool isLoggedIn = await authRepository.isLoggedIn();
+    final UserEntity? user = await authRepository.getCurrentUser();
+
+    if (isLoggedIn && user != null) {
+      emit(const AuthState.success("User already logged in"));
+    } else {
+      emit(const AuthState.loggedOut());
+    }
+  }
+
   Future<void> register({required String email, required String password}) async {
     emit(const AuthState.loading());
     try {
@@ -31,5 +42,23 @@ class AuthCubit extends Cubit<AuthState> {
     }
 
     emit(const AuthState.success("Login successful"));
+  }
+
+  Future<void> logout() async {
+    emit(const AuthState.loading());
+    await authRepository.logout();
+    emit(const AuthState.loggedOut());
+  }
+
+  Future<void> deleteAccount() async {
+    emit(const AuthState.loading());
+    final UserEntity? user = await authRepository.getCurrentUser();
+    if (user == null) {
+      emit(const AuthState.loggedOut());
+      return;
+    }
+
+    await authRepository.deleteUser(user.id);
+    emit(const AuthState.loggedOut());
   }
 }

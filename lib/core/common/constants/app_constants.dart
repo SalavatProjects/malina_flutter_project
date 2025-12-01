@@ -4,4 +4,7 @@ abstract class AppConstants {
 
   static const int maxAvailableLoginAttempts = 3;
   static const int minPasswordLength = 8;
+
+  static const int maxTextFieldLength = 50;
+
 }

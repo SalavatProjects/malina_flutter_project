@@ -21,6 +21,16 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle robotoW400AlmostBlack(double fontSize) {
+    return TextStyle(
+      fontFamily: FontFamily.roboto,
+      height: 1,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w400,
+      color: AppColors.almostBlack,
+    );
+  }
+
   static TextStyle robotoW400GreyMediumDark(double fontSize) {
     return TextStyle(
       fontFamily: FontFamily.roboto,

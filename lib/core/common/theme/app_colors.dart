@@ -19,6 +19,7 @@ abstract class AppColors {
   static const pinkLight = Color(0xffFFDEDD);
   static const yellowLight = Color(0xffFFDF94);
   static const pink = Color(0xffF72055);
+  static const error = Color(0xffB00020); // Material Design error
   static const green = Color(0xff00B866);
   static const greySoft = Color(0xffF5F5F6);
   static const softGreyBlue = Color(0xffF8F8F8);

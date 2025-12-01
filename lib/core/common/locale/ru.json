@@ -9,11 +9,17 @@
   },
   "action": {
     "sign_in" : "войти",
+    "sign_up": "зарегистрироваться",
     "clear" : "очистить",
     "add" : "добавить",
     "save" : "сохранить",
     "delete" : "удалить",
     "sign_out" : "выйти"
+  },
+  "validator_errors": {
+    "incorrect_email" : "Некорректно введен Email",
+    "empty_field" : "Поле не должно быть пустым",
+    "min_length_password" : "Пароль должен содержать минимум ${count: int} символов"
   },
   "auth" : {
     "mail" : "почта",
@@ -22,9 +28,7 @@
       "userNotFound": "Пользователь не найден",
       "invalidEmailOrPassword": "Email или пароль неверны",
       "tooManyAttempts": "Слишком много попыток входа",
-      "unknown": "Неизвестная ошибка",
-
-      "invalidEmail": "Не правильно введен email"
+      "unknown": "Неизвестная ошибка"
     }
   },
   "bottom_nav_bar_content" : {

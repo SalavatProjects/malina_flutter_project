@@ -54,19 +54,35 @@ class CartRepositoryImpl implements CartRepository{
     final UserModel? user = await local.getCurrentUser();
     if (user == null) return;
 
+    final List<CartItemModel> items = List.from(user.cartItems);
+    final int index = items.indexWhere((i) => i.productId == productId);
 
+    if (index == -1) return;
+
+    final CartItemModel item = items[index];
+
+    if (item.quantity <= 1) {
+      items.removeAt(index);
+    } else {
+      items[index] = item.copyWith(quantity: item.quantity - 1);
+    }
+
+    await _saveCartItems(items);
   }
 
   @override
-  Future<void> removeItem({required int productId}) {
-    // TODO: implement removeItem
-    throw UnimplementedError();
+  Future<void> removeItem({required int productId}) async {
+    final UserModel? user = await local.getCurrentUser();
+    if (user == null) return;
+
+    final List<CartItemModel> items = user.cartItems..removeWhere((e) => e.productId == productId);
+
+    await _saveCartItems(items);
   }
 
   @override
-  Future<void> clearCart() {
-    // TODO: implement clearCart
-    throw UnimplementedError();
+  Future<void> clearCart() async {
+    await _saveCartItems([]);
   }
 
 }

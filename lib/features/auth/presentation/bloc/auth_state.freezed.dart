@@ -61,14 +61,15 @@ extension AuthStatePatterns on AuthState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Success value)?  success,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AuthInitial value)?  initial,TResult Function( AuthLoading value)?  loading,TResult Function( AuthSuccess value)?  success,TResult Function( AuthFailure value)?  failure,TResult Function( AuthLoggedOut value)?  loggedOut,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _Success() when success != null:
-return success(_that);case _Failure() when failure != null:
-return failure(_that);case _:
+case AuthInitial() when initial != null:
+return initial(_that);case AuthLoading() when loading != null:
+return loading(_that);case AuthSuccess() when success != null:
+return success(_that);case AuthFailure() when failure != null:
+return failure(_that);case AuthLoggedOut() when loggedOut != null:
+return loggedOut(_that);case _:
   return orElse();
 
 }
@@ -86,14 +87,15 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Success value)  success,required TResult Function( _Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AuthInitial value)  initial,required TResult Function( AuthLoading value)  loading,required TResult Function( AuthSuccess value)  success,required TResult Function( AuthFailure value)  failure,required TResult Function( AuthLoggedOut value)  loggedOut,}){
 final _that = this;
 switch (_that) {
-case _Initial():
-return initial(_that);case _Loading():
-return loading(_that);case _Success():
-return success(_that);case _Failure():
-return failure(_that);}
+case AuthInitial():
+return initial(_that);case AuthLoading():
+return loading(_that);case AuthSuccess():
+return success(_that);case AuthFailure():
+return failure(_that);case AuthLoggedOut():
+return loggedOut(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -107,14 +109,15 @@ return failure(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Success value)?  success,TResult? Function( _Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AuthInitial value)?  initial,TResult? Function( AuthLoading value)?  loading,TResult? Function( AuthSuccess value)?  success,TResult? Function( AuthFailure value)?  failure,TResult? Function( AuthLoggedOut value)?  loggedOut,}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _Success() when success != null:
-return success(_that);case _Failure() when failure != null:
-return failure(_that);case _:
+case AuthInitial() when initial != null:
+return initial(_that);case AuthLoading() when loading != null:
+return loading(_that);case AuthSuccess() when success != null:
+return success(_that);case AuthFailure() when failure != null:
+return failure(_that);case AuthLoggedOut() when loggedOut != null:
+return loggedOut(_that);case _:
   return null;
 
 }
@@ -131,13 +134,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  success,TResult Function( AuthError error)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  success,TResult Function( AuthError error)?  failure,TResult Function()?  loggedOut,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _Success() when success != null:
-return success(_that.message);case _Failure() when failure != null:
-return failure(_that.error);case _:
+case AuthInitial() when initial != null:
+return initial();case AuthLoading() when loading != null:
+return loading();case AuthSuccess() when success != null:
+return success(_that.message);case AuthFailure() when failure != null:
+return failure(_that.error);case AuthLoggedOut() when loggedOut != null:
+return loggedOut();case _:
   return orElse();
 
 }
@@ -155,13 +159,14 @@ return failure(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  success,required TResult Function( AuthError error)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  success,required TResult Function( AuthError error)  failure,required TResult Function()  loggedOut,}) {final _that = this;
 switch (_that) {
-case _Initial():
-return initial();case _Loading():
-return loading();case _Success():
-return success(_that.message);case _Failure():
-return failure(_that.error);}
+case AuthInitial():
+return initial();case AuthLoading():
+return loading();case AuthSuccess():
+return success(_that.message);case AuthFailure():
+return failure(_that.error);case AuthLoggedOut():
+return loggedOut();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -175,13 +180,14 @@ return failure(_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  success,TResult? Function( AuthError error)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  success,TResult? Function( AuthError error)?  failure,TResult? Function()?  loggedOut,}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _Success() when success != null:
-return success(_that.message);case _Failure() when failure != null:
-return failure(_that.error);case _:
+case AuthInitial() when initial != null:
+return initial();case AuthLoading() when loading != null:
+return loading();case AuthSuccess() when success != null:
+return success(_that.message);case AuthFailure() when failure != null:
+return failure(_that.error);case AuthLoggedOut() when loggedOut != null:
+return loggedOut();case _:
   return null;
 
 }
@@ -192,8 +198,8 @@ return failure(_that.error);case _:
 /// @nodoc
 
 
-class _Initial with DiagnosticableTreeMixin implements AuthState {
-  const _Initial();
+class AuthInitial with DiagnosticableTreeMixin implements AuthState {
+  const AuthInitial();
   
 
 
@@ -209,7 +215,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthInitial);
 }
 
 
@@ -230,8 +236,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 /// @nodoc
 
 
-class _Loading with DiagnosticableTreeMixin implements AuthState {
-  const _Loading();
+class AuthLoading with DiagnosticableTreeMixin implements AuthState {
+  const AuthLoading();
   
 
 
@@ -247,7 +253,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthLoading);
 }
 
 
@@ -268,8 +274,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 /// @nodoc
 
 
-class _Success with DiagnosticableTreeMixin implements AuthState {
-  const _Success(this.message);
+class AuthSuccess with DiagnosticableTreeMixin implements AuthState {
+  const AuthSuccess(this.message);
   
 
  final  String message;
@@ -278,7 +284,7 @@ class _Success with DiagnosticableTreeMixin implements AuthState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(this, _$identity);
+$AuthSuccessCopyWith<AuthSuccess> get copyWith => _$AuthSuccessCopyWithImpl<AuthSuccess>(this, _$identity);
 
 
 @override
@@ -290,7 +296,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthSuccess&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -306,8 +312,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 }
 
 /// @nodoc
-abstract mixin class _$SuccessCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
+abstract mixin class $AuthSuccessCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $AuthSuccessCopyWith(AuthSuccess value, $Res Function(AuthSuccess) _then) = _$AuthSuccessCopyWithImpl;
 @useResult
 $Res call({
  String message
@@ -318,17 +324,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(this._self, this._then);
+class _$AuthSuccessCopyWithImpl<$Res>
+    implements $AuthSuccessCopyWith<$Res> {
+  _$AuthSuccessCopyWithImpl(this._self, this._then);
 
-  final _Success _self;
-  final $Res Function(_Success) _then;
+  final AuthSuccess _self;
+  final $Res Function(AuthSuccess) _then;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_Success(
+  return _then(AuthSuccess(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -340,8 +346,8 @@ as String,
 /// @nodoc
 
 
-class _Failure with DiagnosticableTreeMixin implements AuthState {
-  const _Failure(this.error);
+class AuthFailure with DiagnosticableTreeMixin implements AuthState {
+  const AuthFailure(this.error);
   
 
  final  AuthError error;
@@ -350,7 +356,7 @@ class _Failure with DiagnosticableTreeMixin implements AuthState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(this, _$identity);
+$AuthFailureCopyWith<AuthFailure> get copyWith => _$AuthFailureCopyWithImpl<AuthFailure>(this, _$identity);
 
 
 @override
@@ -362,7 +368,7 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthFailure&&(identical(other.error, error) || other.error == error));
 }
 
 
@@ -378,8 +384,8 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 }
 
 /// @nodoc
-abstract mixin class _$FailureCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) = __$FailureCopyWithImpl;
+abstract mixin class $AuthFailureCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $AuthFailureCopyWith(AuthFailure value, $Res Function(AuthFailure) _then) = _$AuthFailureCopyWithImpl;
 @useResult
 $Res call({
  AuthError error
@@ -390,17 +396,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$FailureCopyWithImpl<$Res>
-    implements _$FailureCopyWith<$Res> {
-  __$FailureCopyWithImpl(this._self, this._then);
+class _$AuthFailureCopyWithImpl<$Res>
+    implements $AuthFailureCopyWith<$Res> {
+  _$AuthFailureCopyWithImpl(this._self, this._then);
 
-  final _Failure _self;
-  final $Res Function(_Failure) _then;
+  final AuthFailure _self;
+  final $Res Function(AuthFailure) _then;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(_Failure(
+  return _then(AuthFailure(
 null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as AuthError,
   ));
@@ -408,5 +414,43 @@ as AuthError,
 
 
 }
+
+/// @nodoc
+
+
+class AuthLoggedOut with DiagnosticableTreeMixin implements AuthState {
+  const AuthLoggedOut();
+  
+
+
+
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'AuthState.loggedOut'))
+    ;
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthLoggedOut);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'AuthState.loggedOut()';
+}
+
+
+}
+
+
+
 
 // dart format on

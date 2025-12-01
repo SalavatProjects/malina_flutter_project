@@ -6,9 +6,10 @@ part 'auth_state.freezed.dart';
 
 @freezed
 sealed class AuthState with _$AuthState {
-  const factory AuthState.initial() = _Initial;
-  const factory AuthState.loading() = _Loading;
-  const factory AuthState.success(String message) = _Success;
-  const factory AuthState.failure(AuthError error) = _Failure;
+  const factory AuthState.initial() = AuthInitial;
+  const factory AuthState.loading() = AuthLoading;
+  const factory AuthState.success(String message) = AuthSuccess;
+  const factory AuthState.failure(AuthError error) = AuthFailure;
+  const factory AuthState.loggedOut() = AuthLoggedOut;
 }
 

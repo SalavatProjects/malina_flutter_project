@@ -42,6 +42,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final TranslationsCommonRu common = TranslationsCommonRu._(_root);
 	late final TranslationsActionRu action = TranslationsActionRu._(_root);
+	late final TranslationsValidatorErrorsRu validator_errors = TranslationsValidatorErrorsRu._(_root);
 	late final TranslationsAuthRu auth = TranslationsAuthRu._(_root);
 	late final TranslationsBottomNavBarContentRu bottom_nav_bar_content = TranslationsBottomNavBarContentRu._(_root);
 	late final TranslationsFeedRu feed = TranslationsFeedRu._(_root);
@@ -94,6 +95,9 @@ class TranslationsActionRu {
 	/// ru: 'войти'
 	String get sign_in => 'войти';
 
+	/// ru: 'зарегистрироваться'
+	String get sign_up => 'зарегистрироваться';
+
 	/// ru: 'очистить'
 	String get clear => 'очистить';
 
@@ -108,6 +112,24 @@ class TranslationsActionRu {
 
 	/// ru: 'выйти'
 	String get sign_out => 'выйти';
+}
+
+// Path: validator_errors
+class TranslationsValidatorErrorsRu {
+	TranslationsValidatorErrorsRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ru: 'Некорректно введен Email'
+	String get incorrect_email => 'Некорректно введен Email';
+
+	/// ru: 'Поле не должно быть пустым'
+	String get empty_field => 'Поле не должно быть пустым';
+
+	/// ru: 'Пароль должен содержать минимум ${count: int} символов'
+	String min_length_password({required int count}) => 'Пароль должен содержать минимум ${count} символов';
 }
 
 // Path: auth
@@ -186,9 +208,6 @@ class TranslationsAuthErrorsRu {
 
 	/// ru: 'Неизвестная ошибка'
 	String get unknown => 'Неизвестная ошибка';
-
-	/// ru: 'Не правильно введен email'
-	String get invalidEmail => 'Не правильно введен email';
 }
 
 // Path: feed.food
@@ -256,18 +275,21 @@ extension on Translations {
 			'common.price' => 'цена',
 			'common.description' => 'описание',
 			'action.sign_in' => 'войти',
+			'action.sign_up' => 'зарегистрироваться',
 			'action.clear' => 'очистить',
 			'action.add' => 'добавить',
 			'action.save' => 'сохранить',
 			'action.delete' => 'удалить',
 			'action.sign_out' => 'выйти',
+			'validator_errors.incorrect_email' => 'Некорректно введен Email',
+			'validator_errors.empty_field' => 'Поле не должно быть пустым',
+			'validator_errors.min_length_password' => ({required int count}) => 'Пароль должен содержать минимум ${count} символов',
 			'auth.mail' => 'почта',
 			'auth.password' => 'пароль',
 			'auth.errors.userNotFound' => 'Пользователь не найден',
 			'auth.errors.invalidEmailOrPassword' => 'Email или пароль неверны',
 			'auth.errors.tooManyAttempts' => 'Слишком много попыток входа',
 			'auth.errors.unknown' => 'Неизвестная ошибка',
-			'auth.errors.invalidEmail' => 'Не правильно введен email',
 			'bottom_nav_bar_content.feed' => 'лента',
 			'bottom_nav_bar_content.favorites' => 'избранное',
 			'bottom_nav_bar_content.profile' => 'профиль',
