@@ -5,7 +5,10 @@ import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubi
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_state.dart';
 import 'package:malina_flutter_project/features/auth/presentation/screens/login_screen.dart';
 import 'package:malina_flutter_project/features/auth/presentation/screens/register_screen.dart';
-import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/bottom_nav_bar_shell.dart';
+import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/screens/bottom_nav_bar_shell.dart';
+import 'package:malina_flutter_project/features/cart/presentation/screens/cart_screen.dart';
+import 'package:malina_flutter_project/features/feed/presentation/screens/feed_screen.dart';
+import 'package:malina_flutter_project/features/profile/presentation/screens/profile_screen.dart';
 
 enum AppRoutes {
   // auth
@@ -73,7 +76,7 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.feed.path,
           name: AppRoutes.feed.name,
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const FeedScreen(),
         ),
         GoRoute(
           path: AppRoutes.favorites.path,
@@ -83,12 +86,12 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.profile.path,
           name: AppRoutes.profile.name,
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const ProfileScreen(),
         ),
         GoRoute(
           path: AppRoutes.cart.path,
           name: AppRoutes.cart.name,
-          builder: (context, state) => const Placeholder(),
+          builder: (context, state) => const CartScreen(),
         ),
       ],
     ),

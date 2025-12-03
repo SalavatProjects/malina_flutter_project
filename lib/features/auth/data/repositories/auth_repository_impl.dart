@@ -1,5 +1,6 @@
 import 'package:malina_flutter_project/core/services/id_generator.dart';
 import 'package:malina_flutter_project/features/auth/data/datasources/user_local_data_source.dart';
+import 'package:malina_flutter_project/features/auth/domain/enum/auth_error.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';
 import 'package:malina_flutter_project/features/shared/data/mappers/user_mapper.dart';
 import 'package:malina_flutter_project/features/shared/data/models/user_model.dart';
@@ -60,7 +61,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     final bool isEmailExist = users.any((e) => e.email == email);
     if (isEmailExist) {
-      throw Exception("Email already taken");
+      throw AuthError.emailAlreadyExists;
     }
 
     final String newUserId = (await local.generateNewUserId()).toString();
@@ -73,6 +74,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return createdUser.toEntity();
   }
+
   @override
   Future<void> logout() async {
     await local.setIsLoggedIn(false);

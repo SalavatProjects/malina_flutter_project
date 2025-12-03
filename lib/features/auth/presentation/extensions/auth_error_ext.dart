@@ -6,6 +6,7 @@ extension AuthErrorExt on AuthError {
     AuthError.userNotFound => t.auth.errors.userNotFound,
     AuthError.invalidEmailOrPassword => t.auth.errors.invalidEmailOrPassword,
     AuthError.tooManyAttempts => t.auth.errors.tooManyAttempts,
+    AuthError.emailAlreadyExists => t.auth.errors.emailAlreadyExists,
     AuthError.unknown => t.auth.errors.unknown,
   };
 }

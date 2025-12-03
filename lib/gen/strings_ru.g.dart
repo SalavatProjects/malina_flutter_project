@@ -42,13 +42,13 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final TranslationsCommonRu common = TranslationsCommonRu._(_root);
 	late final TranslationsActionRu action = TranslationsActionRu._(_root);
-	late final TranslationsValidatorErrorsRu validator_errors = TranslationsValidatorErrorsRu._(_root);
+	late final TranslationsValidatorErrorsRu validatorErrors = TranslationsValidatorErrorsRu._(_root);
 	late final TranslationsAuthRu auth = TranslationsAuthRu._(_root);
-	late final TranslationsBottomNavBarContentRu bottom_nav_bar_content = TranslationsBottomNavBarContentRu._(_root);
+	late final TranslationsBottomNavBarContentRu bottomNavBarContent = TranslationsBottomNavBarContentRu._(_root);
 	late final TranslationsFeedRu feed = TranslationsFeedRu._(_root);
 
 	/// ru: 'Поместите QR-код в рамку'
-	String get place_the_qr => 'Поместите QR-код в рамку';
+	String get placeTheQr => 'Поместите QR-код в рамку';
 
 	/// ru: 'корзина'
 	String get cart => 'корзина';
@@ -93,10 +93,10 @@ class TranslationsActionRu {
 	// Translations
 
 	/// ru: 'войти'
-	String get sign_in => 'войти';
+	String get signIn => 'войти';
 
 	/// ru: 'зарегистрироваться'
-	String get sign_up => 'зарегистрироваться';
+	String get signUp => 'зарегистрироваться';
 
 	/// ru: 'очистить'
 	String get clear => 'очистить';
@@ -114,7 +114,7 @@ class TranslationsActionRu {
 	String get sign_out => 'выйти';
 }
 
-// Path: validator_errors
+// Path: validatorErrors
 class TranslationsValidatorErrorsRu {
 	TranslationsValidatorErrorsRu._(this._root);
 
@@ -123,13 +123,16 @@ class TranslationsValidatorErrorsRu {
 	// Translations
 
 	/// ru: 'Некорректно введен Email'
-	String get incorrect_email => 'Некорректно введен Email';
+	String get incorrectEmail => 'Некорректно введен Email';
 
 	/// ru: 'Поле не должно быть пустым'
-	String get empty_field => 'Поле не должно быть пустым';
+	String get emptyField => 'Поле не должно быть пустым';
 
 	/// ru: 'Пароль должен содержать минимум ${count: int} символов'
-	String min_length_password({required int count}) => 'Пароль должен содержать минимум ${count} символов';
+	String minLengthPassword({required int count}) => 'Пароль должен содержать минимум ${count} символов';
+
+	/// ru: 'Пароли не совпадают'
+	String get passwordsNotMatch => 'Пароли не совпадают';
 }
 
 // Path: auth
@@ -146,10 +149,13 @@ class TranslationsAuthRu {
 	/// ru: 'пароль'
 	String get password => 'пароль';
 
+	/// ru: 'Повторите пароль'
+	String get repeatPassword => 'Повторите пароль';
+
 	late final TranslationsAuthErrorsRu errors = TranslationsAuthErrorsRu._(_root);
 }
 
-// Path: bottom_nav_bar_content
+// Path: bottomNavBarContent
 class TranslationsBottomNavBarContentRu {
 	TranslationsBottomNavBarContentRu._(this._root);
 
@@ -182,11 +188,11 @@ class TranslationsFeedRu {
 	String get search => 'Искать в Malina';
 
 	/// ru: 'Сканируй QR-код и заказывай прямо в заведении'
-	String get scan_qr => 'Сканируй QR-код и заказывай прямо в заведении';
+	String get scanQr => 'Сканируй QR-код и заказывай прямо в заведении';
 
 	late final TranslationsFeedFoodRu food = TranslationsFeedFoodRu._(_root);
 	late final TranslationsFeedBeautyRu beauty = TranslationsFeedBeautyRu._(_root);
-	late final TranslationsFeedSoonInMalinaRu soon_in_malina = TranslationsFeedSoonInMalinaRu._(_root);
+	late final TranslationsFeedSoonInMalinaRu soonInMalina = TranslationsFeedSoonInMalinaRu._(_root);
 }
 
 // Path: auth.errors
@@ -205,6 +211,9 @@ class TranslationsAuthErrorsRu {
 
 	/// ru: 'Слишком много попыток входа'
 	String get tooManyAttempts => 'Слишком много попыток входа';
+
+	/// ru: 'Этот email уже зарегистрирован'
+	String get emailAlreadyExists => 'Этот email уже зарегистрирован';
 
 	/// ru: 'Неизвестная ошибка'
 	String get unknown => 'Неизвестная ошибка';
@@ -240,7 +249,7 @@ class TranslationsFeedBeautyRu {
 	String get title => 'Салоны красоты и товары';
 }
 
-// Path: feed.soon_in_malina
+// Path: feed.soonInMalina
 class TranslationsFeedSoonInMalinaRu {
 	TranslationsFeedSoonInMalinaRu._(this._root);
 
@@ -257,6 +266,7 @@ class TranslationsFeedSoonInMalinaRu {
 		'цветы',
 		'спорт',
 		'маркет',
+		'',
 	];
 }
 
@@ -274,39 +284,43 @@ extension on Translations {
 			'common.name' => 'название',
 			'common.price' => 'цена',
 			'common.description' => 'описание',
-			'action.sign_in' => 'войти',
-			'action.sign_up' => 'зарегистрироваться',
+			'action.signIn' => 'войти',
+			'action.signUp' => 'зарегистрироваться',
 			'action.clear' => 'очистить',
 			'action.add' => 'добавить',
 			'action.save' => 'сохранить',
 			'action.delete' => 'удалить',
 			'action.sign_out' => 'выйти',
-			'validator_errors.incorrect_email' => 'Некорректно введен Email',
-			'validator_errors.empty_field' => 'Поле не должно быть пустым',
-			'validator_errors.min_length_password' => ({required int count}) => 'Пароль должен содержать минимум ${count} символов',
+			'validatorErrors.incorrectEmail' => 'Некорректно введен Email',
+			'validatorErrors.emptyField' => 'Поле не должно быть пустым',
+			'validatorErrors.minLengthPassword' => ({required int count}) => 'Пароль должен содержать минимум ${count} символов',
+			'validatorErrors.passwordsNotMatch' => 'Пароли не совпадают',
 			'auth.mail' => 'почта',
 			'auth.password' => 'пароль',
+			'auth.repeatPassword' => 'Повторите пароль',
 			'auth.errors.userNotFound' => 'Пользователь не найден',
 			'auth.errors.invalidEmailOrPassword' => 'Email или пароль неверны',
 			'auth.errors.tooManyAttempts' => 'Слишком много попыток входа',
+			'auth.errors.emailAlreadyExists' => 'Этот email уже зарегистрирован',
 			'auth.errors.unknown' => 'Неизвестная ошибка',
-			'bottom_nav_bar_content.feed' => 'лента',
-			'bottom_nav_bar_content.favorites' => 'избранное',
-			'bottom_nav_bar_content.profile' => 'профиль',
-			'bottom_nav_bar_content.cart' => 'корзина',
+			'bottomNavBarContent.feed' => 'лента',
+			'bottomNavBarContent.favorites' => 'избранное',
+			'bottomNavBarContent.profile' => 'профиль',
+			'bottomNavBarContent.cart' => 'корзина',
 			'feed.search' => 'Искать в Malina',
-			'feed.scan_qr' => 'Сканируй QR-код и заказывай прямо в заведении',
+			'feed.scanQr' => 'Сканируй QR-код и заказывай прямо в заведении',
 			'feed.food.name' => 'еда',
 			'feed.food.title' => 'Из кафе и ресторанов',
 			'feed.beauty.name' => 'бьюти',
 			'feed.beauty.title' => 'Салоны красоты и товары',
-			'feed.soon_in_malina.name' => 'Скоро в Malina',
-			'feed.soon_in_malina.titles.0' => 'вакансии',
-			'feed.soon_in_malina.titles.1' => 'маркет',
-			'feed.soon_in_malina.titles.2' => 'цветы',
-			'feed.soon_in_malina.titles.3' => 'спорт',
-			'feed.soon_in_malina.titles.4' => 'маркет',
-			'place_the_qr' => 'Поместите QR-код в рамку',
+			'feed.soonInMalina.name' => 'Скоро в Malina',
+			'feed.soonInMalina.titles.0' => 'вакансии',
+			'feed.soonInMalina.titles.1' => 'маркет',
+			'feed.soonInMalina.titles.2' => 'цветы',
+			'feed.soonInMalina.titles.3' => 'спорт',
+			'feed.soonInMalina.titles.4' => 'маркет',
+			'feed.soonInMalina.titles.5' => '',
+			'placeTheQr' => 'Поместите QR-код в рамку',
 			'cart' => 'корзина',
 			'profile' => 'профиль',
 			_ => null,

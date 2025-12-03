@@ -7,7 +7,7 @@ abstract class EmailValidator {
 
   static String? validateIncorrectEmail(String value) {
     if (!_emailRegExp.hasMatch(value.trim())) {
-      return t.validator_errors.incorrect_email;
+      return t.validatorErrors.incorrectEmail;
     }
 
     return null;

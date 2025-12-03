@@ -10,6 +10,7 @@ abstract class AppColors {
   static const grey = Color(0xff777777);
   static const greyOutline = Color(0xff79747E);
   static const darkGrey = Color(0xff828282);
+  static const greyMedium = Color(0xff8D8D8D);
   static const greyLight = Color(0xffAAAAAA);
   static const softTeal = Color(0xff7BB9C3);
   static const mintDark = Color(0xffBDE1D1);
@@ -17,6 +18,7 @@ abstract class AppColors {
   static const orangeSoft = Color(0xffFFD3BA);
   static const blueLight = Color(0xffD4E5FF);
   static const pinkLight = Color(0xffFFDEDD);
+  static const pinkPale = Color(0xffFFDEDE);
   static const yellowLight = Color(0xffFFDF94);
   static const pink = Color(0xffF72055);
   static const error = Color(0xffB00020); // Material Design error

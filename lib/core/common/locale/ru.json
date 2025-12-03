@@ -8,30 +8,33 @@
     "description": "описание"
   },
   "action": {
-    "sign_in" : "войти",
-    "sign_up": "зарегистрироваться",
+    "signIn" : "войти",
+    "signUp": "зарегистрироваться",
     "clear" : "очистить",
     "add" : "добавить",
     "save" : "сохранить",
     "delete" : "удалить",
     "sign_out" : "выйти"
   },
-  "validator_errors": {
-    "incorrect_email" : "Некорректно введен Email",
-    "empty_field" : "Поле не должно быть пустым",
-    "min_length_password" : "Пароль должен содержать минимум ${count: int} символов"
+  "validatorErrors": {
+    "incorrectEmail" : "Некорректно введен Email",
+    "emptyField" : "Поле не должно быть пустым",
+    "minLengthPassword" : "Пароль должен содержать минимум ${count: int} символов",
+    "passwordsNotMatch": "Пароли не совпадают"
   },
   "auth" : {
     "mail" : "почта",
     "password" : "пароль",
+    "repeatPassword": "Повторите пароль",
     "errors": {
       "userNotFound": "Пользователь не найден",
       "invalidEmailOrPassword": "Email или пароль неверны",
       "tooManyAttempts": "Слишком много попыток входа",
+      "emailAlreadyExists": "Этот email уже зарегистрирован",
       "unknown": "Неизвестная ошибка"
     }
   },
-  "bottom_nav_bar_content" : {
+  "bottomNavBarContent" : {
     "feed": "лента",
     "favorites" : "избранное",
     "profile" : "профиль",
@@ -39,7 +42,7 @@
   },
   "feed": {
     "search" : "Искать в Malina",
-    "scan_qr" : "Сканируй QR-код и заказывай прямо в заведении",
+    "scanQr" : "Сканируй QR-код и заказывай прямо в заведении",
     "food" : {
       "name" : "еда",
       "title" : "Из кафе и ресторанов"
@@ -48,18 +51,19 @@
       "name" : "бьюти",
       "title" : "Салоны красоты и товары"
     },
-    "soon_in_malina" : {
+    "soonInMalina" : {
       "name" : "Скоро в Malina",
       "titles" : [
         "вакансии",
         "маркет",
         "цветы",
         "спорт",
-        "маркет"
+        "маркет",
+        ""
       ]
     }
   },
-  "place_the_qr" : "Поместите QR-код в рамку",
+  "placeTheQr" : "Поместите QR-код в рамку",
   "cart" : "корзина",
   "profile" : "профиль"
 }

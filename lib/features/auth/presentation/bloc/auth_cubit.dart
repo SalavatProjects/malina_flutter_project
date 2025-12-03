@@ -22,19 +22,29 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> register({required String email, required String password}) async {
+  Future<void> register({
+    required String email,
+    required String password,
+  }) async {
     emit(const AuthState.loading());
     try {
       authRepository.register(email: email, password: password);
       emit(const AuthState.success("Registration successful"));
-    } catch (e) {
-      emit(AuthState.failure(AuthError.unknown));
+    } catch (error) {
+      if (error is AuthError) {
+        emit(AuthState.failure(error));
+      } else {
+        emit(const AuthState.failure(AuthError.unknown));
+      }
     }
   }
 
   Future<void> login({required String email, required String password}) async {
     emit(const AuthState.loading());
-    final UserEntity? user = await authRepository.login(email: email, password: password);
+    final UserEntity? user = await authRepository.login(
+      email: email,
+      password: password,
+    );
 
     if (user == null) {
       emit(const AuthState.failure(AuthError.invalidEmailOrPassword));

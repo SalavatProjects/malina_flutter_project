@@ -55,81 +55,111 @@ class _RegisterScreenState extends State<RegisterScreen> {
         },
         builder: (context, state) {
           return Padding(
-            padding: .all(12.w),
+            padding: EdgeInsets.all(12.w),
 
             child: Form(
               key: _formKey,
-              child: Column(
-                mainAxisAlignment: .center,
-                children: [
-                  AppTextFormField(
-                    textEditingController: _emailTextEditingController,
-                    hintText: t.auth.mail.toCapitalize(),
-                    onTextChanged: (String value) {},
-                    suffixIcon: Icon(
-                      Icons.cancel_outlined,
-                      size: 20.w,
-                      color: AppColors.greyMediumDark,
-                    ),
-                    validator: (String? value) {
-                      return EmptyFieldValidator.validate(value) ??
-                          EmailValidator.validateIncorrectEmail(value!);
-                    },
-                  ),
-                  SizedBox(height: 12.w),
-                  AppTextFormField.password(
-                    textEditingController: _passwordTextEditingController,
-                    onTextChanged: (String value) {},
-                    hintText: t.auth.password.toCapitalize(),
-                    obscureText: _showPassword,
-                    suffixIcon: Icon(
-                      _showPassword
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                    ),
-                    onSuffixIconTap: () {
-                      setState(() {
-                        _showPassword = !_showPassword;
-                      });
-                    },
-                    validator: (String? value) {
-                      return EmptyFieldValidator.validate(value) ??
-                          PasswordValidator.validateMinLength(value!);
-                    },
-                  ),
-                  SizedBox(height: 16.w),
-                  Text('qer'),
-                  AppPrimaryButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context.read<AuthCubit>().login(
-                          email: _emailTextEditingController.text,
-                          password: _passwordTextEditingController.text,
-                        );
-                      }
-                    },
-                    text: t.action.sign_in.toCapitalize(),
-                  ),
-
-                  if (state is AuthFailure)
-                    Padding(
-                      padding: EdgeInsetsGeometry.only(top: 16.w),
-                      child: Text(
-                        state.error.message,
-                        style: AppStyles.robotoW400AlmostBlack(
-                          AppFontSizes.sp14,
-                        ).copyWith(color: AppColors.error),
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Column(
+                    mainAxisSize: .min,
+                    mainAxisAlignment: .center,
+                    children: [
+                      AppTextFormField(
+                        textEditingController: _emailTextEditingController,
+                        hintText: t.auth.mail.toCapitalize(),
+                        onTextChanged: (String value) {},
+                        suffixIcon: Icon(
+                          Icons.cancel_outlined,
+                          size: 20.w,
+                          color: AppColors.greyMediumDark,
+                        ),
+                        validator: (String? value) {
+                          return EmptyFieldValidator.validate(value) ??
+                              EmailValidator.validateIncorrectEmail(value!);
+                        },
                       ),
-                    ),
-                  SizedBox(height: 16.w),
-                  // TODO: this widget not designed for UI
-                  TextButton(
-                    onPressed: () {
-                      appRouter.goNamed(AppRoutes.login.name);
-          },
-                    child: Text(t.action.sign_in.toCapitalize()),
+                      SizedBox(height: 4.w),
+                      AppTextFormField.password(
+                        textEditingController: _passwordTextEditingController,
+                        onTextChanged: (String value) {},
+                        hintText: t.auth.password.toCapitalize(),
+                        obscureText: _showPassword,
+                        suffixIcon: Icon(
+                          _showPassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                        ),
+                        onSuffixIconTap: () {
+                          setState(() {
+                            _showPassword = !_showPassword;
+                          });
+                        },
+                        validator: (String? value) {
+                          return EmptyFieldValidator.validate(value) ??
+                              PasswordValidator.validateMinLength(value!);
+                        },
+                      ),
+                      SizedBox(height: 4.w,),
+                      AppTextFormField.password(
+                        textEditingController: _repeatPasswordTextEditingController,
+                        onTextChanged: (String value) {},
+                        hintText: t.auth.repeatPassword.toCapitalize(),
+                        obscureText: _showRepeatPassword,
+                        suffixIcon: Icon(
+                          _showRepeatPassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                        ),
+                        onSuffixIconTap: () {
+                          setState(() {
+                            _showRepeatPassword = !_showRepeatPassword;
+                          });
+                        },
+                        validator: (String? value) {
+                          return EmptyFieldValidator.validate(value) ??
+                            PasswordValidator.validateMinLength(value!) ??
+                            PasswordValidator.validatePasswordsMatch(
+                                password: _passwordTextEditingController.text,
+                                confirmPassword: value!);
+                        },
+                      ),
+                      SizedBox(height: 8.w),
+                      AppPrimaryButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            context.read<AuthCubit>().register(
+                              email: _emailTextEditingController.text,
+                              password: _passwordTextEditingController.text,
+                            );
+                          }
+                        },
+                        text: t.action.signUp.toCapitalize(),
+                      ),
+                  
+                      if (state is AuthFailure)
+                        Padding(
+                          padding: EdgeInsetsGeometry.only(top: 16.w),
+                          child: Text(
+                            state.error.message,
+                            style: AppStyles.robotoW400AlmostBlack(
+                              AppFontSizes.sp14,
+                            ).copyWith(color: AppColors.error),
+                          ),
+                        ),
+                      SizedBox(height: 16.w),
+                      // TODO: this widget not designed for UI
+                      TextButton(
+                        onPressed: () {
+                          appRouter.goNamed(AppRoutes.login.name);
+                            },
+                        child: Text(t.action.signIn.toCapitalize()),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           );

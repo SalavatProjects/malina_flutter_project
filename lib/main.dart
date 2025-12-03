@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:malina_flutter_project/app/di/di.dart';
 import 'package:malina_flutter_project/app/router/app_router.dart';
+import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         // title: 'Flutter Demo',
         theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.background
           // colorScheme: .fromSeed(seedColor: Colors.deepPurple),
         ),
         routerConfig: appRouter,

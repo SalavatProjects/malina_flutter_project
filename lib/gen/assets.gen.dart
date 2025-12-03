@@ -83,6 +83,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
+  /// File path: assets/icons/search.svg
+  SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
     cosmetic,
@@ -95,6 +98,7 @@ class $AssetsIconsGen {
     heart,
     phoneScan,
     profile,
+    search,
   ];
 }
 
