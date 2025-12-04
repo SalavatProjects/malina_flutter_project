@@ -7,19 +7,24 @@ import 'package:malina_flutter_project/gen/strings.g.dart';
 extension ProductModelToEntity on ProductModel {
   ProductEntity toEntity() {
     return when(
-      food: (id ,category, subcategory, name, price, additivies, imagePath) =>
+      food: (id ,category, subcategory, name, description, price, imagePath, additivies) =>
           ProductEntity(
             id: id,
             category: ProductCategory.food,
             subcategory: subcategory,
             name: name,
+            description: description,
+            imagePath: imagePath,
+            additives: additivies,
             price: price,
           ),
-      beauty: (id, category, subcategory, name, price, imagePath) => ProductEntity(
+      beauty: (id, category, subcategory, name, description, price, imagePath) => ProductEntity(
         id: id,
         category: ProductCategory.beauty,
         subcategory: subcategory,
         name: name,
+        description: description,
+        imagePath: imagePath,
         price: price,
       ),
     );
@@ -35,6 +40,8 @@ extension ProductEntityToModel on ProductEntity {
           category: AppConstants.productFood,
           subcategory: subcategory,
           name: name,
+          description: description,
+          imagePath: imagePath,
           price: price,
         );
       case ProductCategory.beauty:
@@ -43,6 +50,8 @@ extension ProductEntityToModel on ProductEntity {
           category: AppConstants.productBeauty,
           subcategory: subcategory,
           name: name,
+          description: description,
+          imagePath: imagePath,
           price: price,
         );
     }

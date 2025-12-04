@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:malina_flutter_project/app/di/di.dart';
+import 'package:malina_flutter_project/core/common/constants/app_constants.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_state.dart';
 import 'package:malina_flutter_project/features/auth/presentation/screens/login_screen.dart';
@@ -9,6 +10,8 @@ import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/scre
 import 'package:malina_flutter_project/features/cart/presentation/screens/cart_screen.dart';
 import 'package:malina_flutter_project/features/feed/presentation/screens/feed_screen.dart';
 import 'package:malina_flutter_project/features/profile/presentation/screens/profile_screen.dart';
+import 'package:malina_flutter_project/features/qr_scan/presentation/screens/qr_scan_screen.dart';
+import 'package:malina_flutter_project/features/shared/domain/enum/product_category.dart';
 
 enum AppRoutes {
   // auth
@@ -91,14 +94,20 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.cart.path,
           name: AppRoutes.cart.name,
-          builder: (context, state) => const CartScreen(),
+          builder: (context, state) {
+            final String initialCategoryString = state.extra as String? ?? AppConstants.productFood;
+            final ProductCategory initialCategory = ProductCategory.values.firstWhere((e) => e.name == initialCategoryString);
+            return CartScreen(
+              initialCategory: initialCategory,
+            );
+          },
         ),
       ],
     ),
     GoRoute(
       path: AppRoutes.qrScanPage.path,
       name: AppRoutes.qrScanPage.name,
-      builder: (context, state) => const Placeholder(),
+      builder: (context, state) => const QrScanScreen(),
     ),
   ],
 );

@@ -6,12 +6,14 @@ import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await initDependencies();
   final AuthCubit authCubit = getIt<AuthCubit>();
+  final CartCubit cartCubit = getIt<CartCubit>();
   await authCubit.checkAuthStatus();
 
   runApp(
@@ -19,6 +21,9 @@ void main() async {
     providers: [
       BlocProvider<AuthCubit>.value(
         value: authCubit,
+      ),
+      BlocProvider<CartCubit>.value(
+          value: cartCubit,
       )
     ],
     child: const MyApp(),

@@ -12,6 +12,7 @@ sealed class ProductModel with _$ProductModel {
     @Default(AppConstants.productFood) String category,
     required String subcategory,
     required String name,
+    required String description,
     required double price,
     String? imagePath,
     @Default([]) List<String> additivies,
@@ -22,6 +23,7 @@ sealed class ProductModel with _$ProductModel {
     @Default(AppConstants.productBeauty) String category,
     required String subcategory,
     required String name,
+    required String description,
     required double price,
     String? imagePath,
 }) = BeautyProductModel;

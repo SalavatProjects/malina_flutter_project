@@ -38,7 +38,7 @@ ProductModel _$ProductModelFromJson(
 /// @nodoc
 mixin _$ProductModel implements DiagnosticableTreeMixin {
 
- String get id; String get category; String get subcategory; String get name; double get price; String? get imagePath;
+ String get id; String get category; String get subcategory; String get name; String get description; double get price; String? get imagePath;
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -52,21 +52,21 @@ $ProductModelCopyWith<ProductModel> get copyWith => _$ProductModelCopyWithImpl<P
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProductModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,price,imagePath);
+int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,description,price,imagePath);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProductModel(id: $id, category: $category, subcategory: $subcategory, name: $name, price: $price, imagePath: $imagePath)';
+  return 'ProductModel(id: $id, category: $category, subcategory: $subcategory, name: $name, description: $description, price: $price, imagePath: $imagePath)';
 }
 
 
@@ -77,7 +77,7 @@ abstract mixin class $ProductModelCopyWith<$Res>  {
   factory $ProductModelCopyWith(ProductModel value, $Res Function(ProductModel) _then) = _$ProductModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String category, String subcategory, String name, double price, String? imagePath
+ String id, String category, String subcategory, String name, String description, double price, String? imagePath
 });
 
 
@@ -94,12 +94,13 @@ class _$ProductModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? description = null,Object? price = null,Object? imagePath = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imagePath: freezed == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -187,11 +188,11 @@ return beauty(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String> additivies)?  food,TResult Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath)?  beauty,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case FoodProductModel() when food != null:
-return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
-return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath);case _:
+return food(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
+return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath);case _:
   return orElse();
 
 }
@@ -209,11 +210,11 @@ return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)  food,required TResult Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)  beauty,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String> additivies)  food,required TResult Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath)  beauty,}) {final _that = this;
 switch (_that) {
 case FoodProductModel():
-return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel():
-return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath);}
+return food(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel():
+return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -227,11 +228,11 @@ return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath,  List<String> additivies)?  food,TResult? Function( String id,  String category,  String subcategory,  String name,  double price,  String? imagePath)?  beauty,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String> additivies)?  food,TResult? Function( String id,  String category,  String subcategory,  String name,  String description,  double price,  String? imagePath)?  beauty,}) {final _that = this;
 switch (_that) {
 case FoodProductModel() when food != null:
-return food(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
-return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath);case _:
+return food(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additivies);case BeautyProductModel() when beauty != null:
+return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath);case _:
   return null;
 
 }
@@ -243,13 +244,14 @@ return beauty(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_
 @JsonSerializable()
 
 class FoodProductModel with DiagnosticableTreeMixin implements ProductModel {
-  const FoodProductModel({required this.id, this.category = AppConstants.productFood, required this.subcategory, required this.name, required this.price, this.imagePath, final  List<String> additivies = const [], final  String? $type}): _additivies = additivies,$type = $type ?? 'food';
+  const FoodProductModel({required this.id, this.category = AppConstants.productFood, required this.subcategory, required this.name, required this.description, required this.price, this.imagePath, final  List<String> additivies = const [], final  String? $type}): _additivies = additivies,$type = $type ?? 'food';
   factory FoodProductModel.fromJson(Map<String, dynamic> json) => _$FoodProductModelFromJson(json);
 
 @override final  String id;
 @override@JsonKey() final  String category;
 @override final  String subcategory;
 @override final  String name;
+@override final  String description;
 @override final  double price;
 @override final  String? imagePath;
  final  List<String> _additivies;
@@ -278,21 +280,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProductModel.food'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additivies', additivies));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additivies', additivies));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FoodProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other._additivies, _additivies));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FoodProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other._additivies, _additivies));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,price,imagePath,const DeepCollectionEquality().hash(_additivies));
+int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,description,price,imagePath,const DeepCollectionEquality().hash(_additivies));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProductModel.food(id: $id, category: $category, subcategory: $subcategory, name: $name, price: $price, imagePath: $imagePath, additivies: $additivies)';
+  return 'ProductModel.food(id: $id, category: $category, subcategory: $subcategory, name: $name, description: $description, price: $price, imagePath: $imagePath, additivies: $additivies)';
 }
 
 
@@ -303,7 +305,7 @@ abstract mixin class $FoodProductModelCopyWith<$Res> implements $ProductModelCop
   factory $FoodProductModelCopyWith(FoodProductModel value, $Res Function(FoodProductModel) _then) = _$FoodProductModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String category, String subcategory, String name, double price, String? imagePath, List<String> additivies
+ String id, String category, String subcategory, String name, String description, double price, String? imagePath, List<String> additivies
 });
 
 
@@ -320,12 +322,13 @@ class _$FoodProductModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additivies = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? description = null,Object? price = null,Object? imagePath = freezed,Object? additivies = null,}) {
   return _then(FoodProductModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imagePath: freezed == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
 as String?,additivies: null == additivies ? _self._additivies : additivies // ignore: cast_nullable_to_non_nullable
@@ -340,13 +343,14 @@ as List<String>,
 @JsonSerializable()
 
 class BeautyProductModel with DiagnosticableTreeMixin implements ProductModel {
-  const BeautyProductModel({required this.id, this.category = AppConstants.productBeauty, required this.subcategory, required this.name, required this.price, this.imagePath, final  String? $type}): $type = $type ?? 'beauty';
+  const BeautyProductModel({required this.id, this.category = AppConstants.productBeauty, required this.subcategory, required this.name, required this.description, required this.price, this.imagePath, final  String? $type}): $type = $type ?? 'beauty';
   factory BeautyProductModel.fromJson(Map<String, dynamic> json) => _$BeautyProductModelFromJson(json);
 
 @override final  String id;
 @override@JsonKey() final  String category;
 @override final  String subcategory;
 @override final  String name;
+@override final  String description;
 @override final  double price;
 @override final  String? imagePath;
 
@@ -368,21 +372,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProductModel.beauty'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BeautyProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BeautyProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,price,imagePath);
+int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,description,price,imagePath);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProductModel.beauty(id: $id, category: $category, subcategory: $subcategory, name: $name, price: $price, imagePath: $imagePath)';
+  return 'ProductModel.beauty(id: $id, category: $category, subcategory: $subcategory, name: $name, description: $description, price: $price, imagePath: $imagePath)';
 }
 
 
@@ -393,7 +397,7 @@ abstract mixin class $BeautyProductModelCopyWith<$Res> implements $ProductModelC
   factory $BeautyProductModelCopyWith(BeautyProductModel value, $Res Function(BeautyProductModel) _then) = _$BeautyProductModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String category, String subcategory, String name, double price, String? imagePath
+ String id, String category, String subcategory, String name, String description, double price, String? imagePath
 });
 
 
@@ -410,12 +414,13 @@ class _$BeautyProductModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? description = null,Object? price = null,Object? imagePath = freezed,}) {
   return _then(BeautyProductModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as String,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imagePath: freezed == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
 as String?,

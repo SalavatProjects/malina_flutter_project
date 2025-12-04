@@ -11,6 +11,7 @@ sealed class ProductEntity with _$ProductEntity {
     required ProductCategory category,
     required String subcategory,
     required String name,
+    required String description,
     required double price,
     String? imagePath,
     List<String>? additives,

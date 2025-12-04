@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductEntity implements DiagnosticableTreeMixin {
 
- String get id; ProductCategory get category; String get subcategory; String get name; double get price; String? get imagePath; List<String>? get additives;
+ String get id; ProductCategory get category; String get subcategory; String get name; String get description; double get price; String? get imagePath; List<String>? get additives;
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,21 +26,21 @@ $ProductEntityCopyWith<ProductEntity> get copyWith => _$ProductEntityCopyWithImp
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProductEntity'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additives', additives));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additives', additives));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other.additives, additives));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other.additives, additives));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,price,imagePath,const DeepCollectionEquality().hash(additives));
+int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,description,price,imagePath,const DeepCollectionEquality().hash(additives));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProductEntity(id: $id, category: $category, subcategory: $subcategory, name: $name, price: $price, imagePath: $imagePath, additives: $additives)';
+  return 'ProductEntity(id: $id, category: $category, subcategory: $subcategory, name: $name, description: $description, price: $price, imagePath: $imagePath, additives: $additives)';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProductEntityCopyWith<$Res>  {
   factory $ProductEntityCopyWith(ProductEntity value, $Res Function(ProductEntity) _then) = _$ProductEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
+ String id, ProductCategory category, String subcategory, String name, String description, double price, String? imagePath, List<String>? additives
 });
 
 
@@ -68,12 +68,13 @@ class _$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? description = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as ProductCategory,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imagePath: freezed == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
 as String?,additives: freezed == additives ? _self.additives : additives // ignore: cast_nullable_to_non_nullable
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String>? additives)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);case _:
+return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additives);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  ProductCategory category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String>? additives)  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity():
-return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);}
+return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additives);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -197,10 +198,10 @@ return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ProductCategory category,  String subcategory,  String name,  double price,  String? imagePath,  List<String>? additives)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  ProductCategory category,  String subcategory,  String name,  String description,  double price,  String? imagePath,  List<String>? additives)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price,_that.imagePath,_that.additives);case _:
+return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.description,_that.price,_that.imagePath,_that.additives);case _:
   return null;
 
 }
@@ -212,13 +213,14 @@ return $default(_that.id,_that.category,_that.subcategory,_that.name,_that.price
 
 
 class _ProductEntity with DiagnosticableTreeMixin implements ProductEntity {
-  const _ProductEntity({required this.id, required this.category, required this.subcategory, required this.name, required this.price, this.imagePath, final  List<String>? additives}): _additives = additives;
+  const _ProductEntity({required this.id, required this.category, required this.subcategory, required this.name, required this.description, required this.price, this.imagePath, final  List<String>? additives}): _additives = additives;
   
 
 @override final  String id;
 @override final  ProductCategory category;
 @override final  String subcategory;
 @override final  String name;
+@override final  String description;
 @override final  double price;
 @override final  String? imagePath;
  final  List<String>? _additives;
@@ -242,21 +244,21 @@ _$ProductEntityCopyWith<_ProductEntity> get copyWith => __$ProductEntityCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ProductEntity'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additives', additives));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('category', category))..add(DiagnosticsProperty('subcategory', subcategory))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('price', price))..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('additives', additives));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other._additives, _additives));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.category, category) || other.category == category)&&(identical(other.subcategory, subcategory) || other.subcategory == subcategory)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&const DeepCollectionEquality().equals(other._additives, _additives));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,price,imagePath,const DeepCollectionEquality().hash(_additives));
+int get hashCode => Object.hash(runtimeType,id,category,subcategory,name,description,price,imagePath,const DeepCollectionEquality().hash(_additives));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ProductEntity(id: $id, category: $category, subcategory: $subcategory, name: $name, price: $price, imagePath: $imagePath, additives: $additives)';
+  return 'ProductEntity(id: $id, category: $category, subcategory: $subcategory, name: $name, description: $description, price: $price, imagePath: $imagePath, additives: $additives)';
 }
 
 
@@ -267,7 +269,7 @@ abstract mixin class _$ProductEntityCopyWith<$Res> implements $ProductEntityCopy
   factory _$ProductEntityCopyWith(_ProductEntity value, $Res Function(_ProductEntity) _then) = __$ProductEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, ProductCategory category, String subcategory, String name, double price, String? imagePath, List<String>? additives
+ String id, ProductCategory category, String subcategory, String name, String description, double price, String? imagePath, List<String>? additives
 });
 
 
@@ -284,12 +286,13 @@ class __$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? category = null,Object? subcategory = null,Object? name = null,Object? description = null,Object? price = null,Object? imagePath = freezed,Object? additives = freezed,}) {
   return _then(_ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as ProductCategory,subcategory: null == subcategory ? _self.subcategory : subcategory // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,imagePath: freezed == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
 as String?,additives: freezed == additives ? _self._additives : additives // ignore: cast_nullable_to_non_nullable
