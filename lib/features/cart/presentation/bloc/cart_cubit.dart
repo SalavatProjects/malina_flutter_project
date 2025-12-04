@@ -69,7 +69,7 @@ class CartCubit extends Cubit<CartState> {
   Future<void> remove(int productId) async {
     if (state is! CartLoaded) return;
 
-    final current = (state as CartLoaded).items;
+    final current = List<CartItemEntity>.from((state as CartLoaded).items);
     final updated = current..removeWhere((e) => e.productId == productId);
 
     emit(CartState.loaded(updated));

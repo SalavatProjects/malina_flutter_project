@@ -119,6 +119,7 @@ class _QrScanScreenState extends State<QrScanScreen> {
                       product: _scannedProduct!,
                       onPressed: () {
                         context.pop(_scannedProduct);
+                        _scannedProduct = null;
                       },
                   ),
                 )

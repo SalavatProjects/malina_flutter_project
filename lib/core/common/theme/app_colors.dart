@@ -18,6 +18,7 @@ abstract class AppColors {
   static const mint = Color(0xffCFF2E3);
   static const orangeSoft = Color(0xffFFD3BA);
   static const blueLight = Color(0xffD4E5FF);
+  static const pinkExtraLight = Color(0xffFFECEC);
   static const pinkLight = Color(0xffFFDEDD);
   static const pinkPale = Color(0xffFFDEDE);
   static const yellowLight = Color(0xffFFDF94);

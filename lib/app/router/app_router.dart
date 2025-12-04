@@ -8,6 +8,7 @@ import 'package:malina_flutter_project/features/auth/presentation/screens/login_
 import 'package:malina_flutter_project/features/auth/presentation/screens/register_screen.dart';
 import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/screens/bottom_nav_bar_shell.dart';
 import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:malina_flutter_project/features/cart/presentation/screens/add_product_screen.dart';
 import 'package:malina_flutter_project/features/cart/presentation/screens/cart_screen.dart';
 import 'package:malina_flutter_project/features/feed/presentation/screens/feed_screen.dart';
 import 'package:malina_flutter_project/features/profile/presentation/screens/profile_screen.dart';
@@ -25,8 +26,9 @@ enum AppRoutes {
   favorites("/home/favorites"),
   profile("/home/profile"),
   cart("/home/cart"),
+  qrScanPage("/qrScanPage"),
 
-  qrScanPage("/qrScanPage");
+  addProductToCart("/home/cart/addProduct");
 
   final String path;
   const AppRoutes(this.path);
@@ -49,7 +51,7 @@ final GoRouter appRouter = GoRouter(
     if (auth is AuthLoggedOut &&
         state.matchedLocation != AppRoutes.login.path &&
             state.matchedLocation != AppRoutes.register.path) {
-      print('hi123');
+      // print('hi123');
       return AppRoutes.login.path;
     }
 
@@ -110,5 +112,11 @@ final GoRouter appRouter = GoRouter(
       name: AppRoutes.qrScanPage.name,
       builder: (context, state) => const QrScanScreen(),
     ),
+    GoRoute(
+        path: AppRoutes.addProductToCart.path,
+        name: AppRoutes.addProductToCart.name,
+        builder: (context, state) => const AddProductScreen()
+    )
+
   ],
 );

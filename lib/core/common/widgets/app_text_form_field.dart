@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final void Function()? onSuffixIconTap;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
 
   AppTextFormField({
@@ -24,6 +25,7 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.onSuffixIconTap,
     this.validator,
+    this.keyboardType,
     this.inputFormatters,
   }) : obscureText = false;
 
@@ -37,6 +39,7 @@ class AppTextFormField extends StatelessWidget {
     required this.suffixIcon,
     required this.onSuffixIconTap,
     this.validator,
+    this.keyboardType,
 }) : inputFormatters = null;
 
   final OutlineInputBorder _inputBorder = OutlineInputBorder(
@@ -48,14 +51,15 @@ class AppTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 64.w,
+      height: 66.w,
       child: TextFormField(
         controller: textEditingController,
         obscureText: obscureText,
         maxLength: AppConstants.maxTextFieldLength,
         style: AppStyles.robotoW400AlmostBlack(AppFontSizes.sp16),
+        keyboardType: keyboardType,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.w),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
           border: _inputBorder,
           focusedBorder: _inputBorder,
           hintText: hintText,

@@ -8,10 +8,10 @@ import 'package:malina_flutter_project/gen/assets.gen.dart';
 
 class ProductFromQrFactory {
   final _rnd = Random();
-  static const String _productsCollectionName = "products";
+
 
   Future<ProductModel> create(String qr) async {
-    final productId = await IdGenerator.next(_productsCollectionName);
+    final productId = await IdGenerator.next(AppConstants.productsCollectionName);
     if (qr.startsWith(AppConstants.productFood)) {
       return ProductModel.food(
         id: productId.toString(),

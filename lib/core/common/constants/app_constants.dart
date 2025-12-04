@@ -7,4 +7,6 @@ abstract class AppConstants {
 
   static const int maxTextFieldLength = 50;
 
+  static const String productsCollectionName = "products";
+
 }

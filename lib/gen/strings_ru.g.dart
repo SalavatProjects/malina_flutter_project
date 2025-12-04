@@ -111,6 +111,9 @@ class TranslationsActionRu {
 
 	/// ru: 'выйти'
 	String get sign_out => 'выйти';
+
+	/// ru: 'сканировать'
+	String get scan => 'сканировать';
 }
 
 // Path: validatorErrors
@@ -311,6 +314,7 @@ extension on Translations {
 			'action.save' => 'сохранить',
 			'action.delete' => 'удалить',
 			'action.sign_out' => 'выйти',
+			'action.scan' => 'сканировать',
 			'validatorErrors.incorrectEmail' => 'Некорректно введен Email',
 			'validatorErrors.emptyField' => 'Поле не должно быть пустым',
 			'validatorErrors.minLengthPassword' => ({required int count}) => 'Пароль должен содержать минимум ${count} символов',

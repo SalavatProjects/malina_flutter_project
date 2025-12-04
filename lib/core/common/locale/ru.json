@@ -14,7 +14,8 @@
     "add" : "добавить",
     "save" : "сохранить",
     "delete" : "удалить",
-    "sign_out" : "выйти"
+    "sign_out" : "выйти",
+    "scan": "сканировать"
   },
   "validatorErrors": {
     "incorrectEmail" : "Некорректно введен Email",

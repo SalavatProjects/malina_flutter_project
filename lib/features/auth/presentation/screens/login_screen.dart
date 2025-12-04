@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            print('success');
+            appRouter.pushNamed(AppRoutes.home.name);
           }
         },
         builder: (context, state) {

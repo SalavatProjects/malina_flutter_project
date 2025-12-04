@@ -29,6 +29,20 @@ class CartProductCard extends StatelessWidget {
     required this.onAdditivitiesPressed,
   });
 
+  double _calculateTotalPrice() {
+    double price = 0;
+    int quantity = 0;
+    if (cartItems.isNotEmpty) {
+      for (ProductEntity product in productsBySubcategory) {
+        quantity = cartItems.firstWhereOrNull((e) => e.productId == int.parse(product.id))?.quantity ?? 0;
+
+        price += product.price * quantity;
+
+      }
+    }
+    return price;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +67,7 @@ class CartProductCard extends StatelessWidget {
           SizedBox(height: 12.w,),
           Column(
             children: List.generate(productsBySubcategory.length, (int index) {
-              final int currentProductQuantity = cartItems.firstWhere((e) => e.productId.toString() == productsBySubcategory[index].id).quantity;
+              final int currentProductQuantity = cartItems.firstWhereOrNull((e) => e.productId.toString() == productsBySubcategory[index].id)?.quantity ?? 0;
               return Column(
               children: [
                 Row(
@@ -110,7 +124,9 @@ class CartProductCard extends StatelessWidget {
                                   CupertinoButton(
                                       padding: EdgeInsets.zero,
                                       sizeStyle: CupertinoButtonSize.small,
-                                      child: SvgPicture.asset(Assets.icons.delete.path), onPressed: () {})
+                                      child: SvgPicture.asset(Assets.icons.delete.path), onPressed: () {
+                                        onRemovePressed(int.parse(productsBySubcategory[index].id));
+                                  })
                                 ],
                               ),
                             )
@@ -128,10 +144,13 @@ class CartProductCard extends StatelessWidget {
                   }),
                 ),
                 SizedBox(height: 20.w,),
-                _TotalCard(totalPrice: productsBySubcategory.fold(0, (sum, item) => sum + item.price))
+
               ],
             );
             }),
+          ),
+          _TotalCard(totalPrice: _calculateTotalPrice()
+          // productsBySubcategory.fold(0, (sum, item) => sum + item.price),
           )
         ],
       ),
