@@ -7,6 +7,7 @@ import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_stat
 import 'package:malina_flutter_project/features/auth/presentation/screens/login_screen.dart';
 import 'package:malina_flutter_project/features/auth/presentation/screens/register_screen.dart';
 import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/screens/bottom_nav_bar_shell.dart';
+import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:malina_flutter_project/features/cart/presentation/screens/cart_screen.dart';
 import 'package:malina_flutter_project/features/feed/presentation/screens/feed_screen.dart';
 import 'package:malina_flutter_project/features/profile/presentation/screens/profile_screen.dart';

@@ -13,6 +13,7 @@ abstract class AppColors {
   static const greyMedium = Color(0xff8D8D8D);
   static const greyLight = Color(0xffAAAAAA);
   static const softTeal = Color(0xff7BB9C3);
+  static const greyExtraLight = Color(0xffEDEBEB);
   static const mintDark = Color(0xffBDE1D1);
   static const mint = Color(0xffCFF2E3);
   static const orangeSoft = Color(0xffFFD3BA);

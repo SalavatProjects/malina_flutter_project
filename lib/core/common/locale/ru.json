@@ -64,6 +64,11 @@
     }
   },
   "placeTheQr" : "Поместите QR-код в рамку",
-  "cart" : "корзина",
+  "cart" : {
+    "name": "корзина",
+    "noProductsByThisCategory": "Нет товаров в корзине из категории ${categoty: String}",
+    "additivies": "добавки",
+    "total": "всего"
+  },
   "profile" : "профиль"
 }

@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:malina_flutter_project/app/di/di.dart';
+import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/common/widgets/custom_app_bar.dart';
+import 'package:malina_flutter_project/core/ext/string_ext.dart';
+import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:malina_flutter_project/features/cart/presentation/widgets/cart_category_button.dart';
+import 'package:malina_flutter_project/features/cart/presentation/widgets/cart_product_card.dart';
+import 'package:malina_flutter_project/features/product/domain/repositories/product_repository.dart';
+import 'package:malina_flutter_project/features/shared/domain/entities/cart_item_entity.dart';
+import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
 import 'package:malina_flutter_project/features/shared/domain/enum/product_category.dart';
+import 'package:malina_flutter_project/features/shared/presentation/extension/product_category_ext.dart';
+import 'package:malina_flutter_project/gen/strings.g.dart';
+
+import '../bloc/cart_state.dart';
 
 class CartScreen extends StatefulWidget {
   final ProductCategory initialCategory;
 
-  const CartScreen({
-    super.key,
-    required this.initialCategory,
-  });
+  const CartScreen({super.key, required this.initialCategory});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
@@ -19,14 +32,127 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
+    context.read<CartCubit>().loadCart();
     _selectedCategory = widget.initialCategory;
+  }
+
+  void _selectProductCategory(ProductCategory category) {
+    setState(() {
+      _selectedCategory = category;
+    });
+  }
+
+  Future<List<ProductEntity>> _getUserProducts(BuildContext context, List<CartItemEntity> items) async {
+    final productRepository = getIt<ProductRepository>();
+
+    final List<ProductEntity> result = [];
+
+    for (final item in items) {
+      final product = await productRepository.getProductById(item.productId.toString());
+      print(product);
+      if (product != null) {
+        result.add(product);
+      }
+    }
+
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('cart screen'),
+      appBar: CustomAppBar(
+        onActionPressed: () {},
+        actionText: t.action.clear.toCapitalize(),
+        title: t.cart.name.toCapitalize(),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.w),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: CartCategoryButton(
+                        onPressed: () {
+                          _selectProductCategory(ProductCategory.food);
+                        },
+                        isActive: ProductCategory.food == _selectedCategory,
+                        text: t.feed.food.name.toCapitalize(),
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: CartCategoryButton(
+                        onPressed: () {
+                          _selectProductCategory(ProductCategory.beauty);
+                        },
+                        isActive: ProductCategory.beauty == _selectedCategory,
+                        text: t.feed.beauty.name.toCapitalize(),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 26.w),
+                BlocBuilder<CartCubit, CartState>(
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () =>
+                          const Center(child: CircularProgressIndicator()),
+                      loading: () =>
+                          const Center(child: CircularProgressIndicator()),
+                      loaded: (items) {
+                        return FutureBuilder(
+                            future: _getUserProducts(context, items),
+                            builder: (context, snapshot) {
+                              // print(snapshot);
+                              if (snapshot.hasData) {
+                                // print(snapshot.data.runtimeType);
+                                final List<ProductEntity> productsByCategory = snapshot.data!.where((e) => e.category == _selectedCategory).toList();
+                                if (productsByCategory.isNotEmpty) {
+                                  final List<String> subcategories = productsByCategory.map((e) => e.subcategory).toSet().toList();
+                                  return Column(
+                                    children: List.generate(subcategories.length, (int subcategoryIndex) => CartProductCard(
+                                        productsBySubcategory: productsByCategory.where((e) => e.subcategory == subcategories[subcategoryIndex]).toList(),
+                                        cartItems: items,
+                                        onIncreasePressed: (int productId) {
+
+                                        }, onDecreasePressed: (int productId) {},
+                                        onRemovePressed: (int productId) {},
+                                      onAdditivitiesPressed: (int productId) {},
+                                    )),
+                                  );
+                                } else {
+                                  return Center(child: Text(
+                                      t.cart.noProductsByThisCategory(categoty: _selectedCategory.label.toCapitalize()),
+                                  style: AppStyles.robotoW400AlmostBlack(AppFontSizes.sp16),
+                                  ),
+                                  
+                                  );
+                                }
+                                
+                              } else {
+                                return const Center(child: CircularProgressIndicator(),);
+                              }
+                            });
+                      },
+                      error: (message) => Center(
+                        child: Text(
+                          message,
+                          style: AppStyles.robotoW400AlmostBlack(
+                            AppFontSizes.sp16,
+                          ).copyWith(color: AppColors.error),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

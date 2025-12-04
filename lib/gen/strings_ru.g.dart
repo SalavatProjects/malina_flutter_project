@@ -50,8 +50,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// ru: 'Поместите QR-код в рамку'
 	String get placeTheQr => 'Поместите QR-код в рамку';
 
-	/// ru: 'корзина'
-	String get cart => 'корзина';
+	late final TranslationsCartRu cart = TranslationsCartRu._(_root);
 
 	/// ru: 'профиль'
 	String get profile => 'профиль';
@@ -195,6 +194,27 @@ class TranslationsFeedRu {
 	late final TranslationsFeedSoonInMalinaRu soonInMalina = TranslationsFeedSoonInMalinaRu._(_root);
 }
 
+// Path: cart
+class TranslationsCartRu {
+	TranslationsCartRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ru: 'корзина'
+	String get name => 'корзина';
+
+	/// ru: 'Нет товаров в корзине из категории ${categoty: String}'
+	String noProductsByThisCategory({required String categoty}) => 'Нет товаров в корзине из категории ${categoty}';
+
+	/// ru: 'добавки'
+	String get additivies => 'добавки';
+
+	/// ru: 'всего'
+	String get total => 'всего';
+}
+
 // Path: auth.errors
 class TranslationsAuthErrorsRu {
 	TranslationsAuthErrorsRu._(this._root);
@@ -321,7 +341,10 @@ extension on Translations {
 			'feed.soonInMalina.titles.4' => 'маркет',
 			'feed.soonInMalina.titles.5' => '',
 			'placeTheQr' => 'Поместите QR-код в рамку',
-			'cart' => 'корзина',
+			'cart.name' => 'корзина',
+			'cart.noProductsByThisCategory' => ({required String categoty}) => 'Нет товаров в корзине из категории ${categoty}',
+			'cart.additivies' => 'добавки',
+			'cart.total' => 'всего',
 			'profile' => 'профиль',
 			_ => null,
 		};

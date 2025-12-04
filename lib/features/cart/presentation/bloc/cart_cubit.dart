@@ -20,6 +20,17 @@ class CartCubit extends Cubit<CartState> {
 
   Timer? _debounceTimer;
 
+  Future<void> loadCart() async {
+    emit(const CartState.loading());
+    try {
+      final items = await cartRepository.getCurrentUserCart();
+      // print(items);
+      emit(CartState.loaded(items));
+    } catch (e) {
+      emit(CartState.error(e.toString()));
+    }
+  }
+
   Future<void> addProduct(ProductEntity product) async {
     if (state is! CartLoaded) return;
 
