@@ -31,6 +31,6 @@ class CustomNavBar extends StatelessWidget {
         mainAxisAlignment: .spaceBetween,
         children: items,
       ),
-    );;
+    );
   }
 }

@@ -1,7 +1,5 @@
-import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
@@ -70,7 +68,6 @@ class _CircleButton extends StatelessWidget {
   final String text;
 
   const _CircleButton({
-    super.key,
     required this.onPressed,
     required this.iconPath,
     required this.text,
@@ -92,7 +89,7 @@ class _CircleButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: .spaceEvenly,
           children: [
-            SvgPicture.asset(iconPath, width: 22.w, colorFilter: ColorFilter.mode(AppColors.almostBlack, BlendMode.srcIn),),
+            SvgPicture.asset(iconPath, width: 22.w, colorFilter: const ColorFilter.mode(AppColors.almostBlack, BlendMode.srcIn),),
             Text(text, style: AppStyles.wixMadeforDisplayW400AlmostBlack(AppFontSizes.sp10),)
           ],
         ),

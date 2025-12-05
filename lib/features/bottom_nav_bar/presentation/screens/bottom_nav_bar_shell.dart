@@ -1,15 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:malina_flutter_project/app/router/app_router.dart';
-import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/widgets/cart_content.dart';
 import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
-import 'package:malina_flutter_project/features/shared/data/models/product_model.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
 import 'package:malina_flutter_project/features/shared/domain/enum/product_category.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
@@ -53,7 +49,6 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
     final int currentIndex = _getCurrentIndex(
       GoRouterState.of(context).uri.toString(),
     );
-    // print(GoRouterState.of(context).uri.toString());
     return Scaffold(
       body: Stack(
         clipBehavior: Clip.none,

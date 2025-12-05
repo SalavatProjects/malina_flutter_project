@@ -55,7 +55,6 @@ class _CartScreenState extends State<CartScreen> {
       final product = await productRepository.getProductById(
         item.productId.toString(),
       );
-      // print(product);
       if (product != null) {
         result.add(product);
       }
@@ -118,9 +117,7 @@ class _CartScreenState extends State<CartScreen> {
                             return FutureBuilder(
                               future: _getUserProducts(context, items),
                               builder: (context, snapshot) {
-                                // print(snapshot);
                                 if (snapshot.hasData) {
-                                  // print(snapshot.data.runtimeType);
                                   final List<ProductEntity> productsByCategory =
                                       snapshot.data!.where((e) => e.category == _selectedCategory,).toList();
                                   if (productsByCategory.isNotEmpty) {
@@ -147,7 +144,6 @@ class _CartScreenState extends State<CartScreen> {
                                                     },
                                                 onRemovePressed:
                                                     (int productId) {
-                                                  print('hi');
                                                   context.read<CartCubit>().remove(productId);
                                                     },
                                                 onAdditivitiesPressed:

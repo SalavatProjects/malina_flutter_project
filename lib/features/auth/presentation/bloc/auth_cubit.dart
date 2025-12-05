@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:malina_flutter_project/features/auth/domain/enum/auth_error.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/user_entity.dart';
-import 'package:meta/meta.dart';
 
 import 'auth_state.dart';
 

@@ -5,7 +5,6 @@ import 'package:malina_flutter_project/features/cart/domain/repositories/cart_re
 import 'package:malina_flutter_project/features/product/domain/repositories/product_repository.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/cart_item_entity.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
-import 'package:meta/meta.dart';
 
 import 'cart_state.dart';
 
@@ -24,7 +23,6 @@ class CartCubit extends Cubit<CartState> {
     emit(const CartState.loading());
     try {
       final items = await cartRepository.getCurrentUserCart();
-      // print(items);
       emit(CartState.loaded(items));
     } catch (e) {
       emit(CartState.error(e.toString()));

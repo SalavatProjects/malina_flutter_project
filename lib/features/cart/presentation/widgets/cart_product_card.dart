@@ -163,7 +163,6 @@ class _IncreaseDecreaseButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _IncreaseDecreaseButton({
-    super.key,
     required this.icon,
     required this.onPressed,
   });
@@ -189,7 +188,6 @@ class _AdditivitiesButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const _AdditivitiesButton({
-    super.key,
     required this.onPressed,
   });
 
@@ -231,7 +229,6 @@ class _TotalCard extends StatelessWidget {
   final double totalPrice;
 
   const _TotalCard({
-    super.key,
     required this.totalPrice,
   });
 

@@ -1,4 +1,3 @@
-import 'package:malina_flutter_project/core/services/id_generator.dart';
 import 'package:malina_flutter_project/features/auth/data/datasources/user_local_data_source.dart';
 import 'package:malina_flutter_project/features/auth/domain/enum/auth_error.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';

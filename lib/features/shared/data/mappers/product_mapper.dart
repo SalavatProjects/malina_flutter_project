@@ -2,7 +2,6 @@ import 'package:malina_flutter_project/core/common/constants/app_constants.dart'
 import 'package:malina_flutter_project/features/shared/data/models/product_model.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
 import 'package:malina_flutter_project/features/shared/domain/enum/product_category.dart';
-import 'package:malina_flutter_project/gen/strings.g.dart';
 
 extension ProductModelToEntity on ProductModel {
   ProductEntity toEntity() {

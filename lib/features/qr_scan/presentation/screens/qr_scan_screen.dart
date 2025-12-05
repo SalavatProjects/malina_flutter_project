@@ -9,7 +9,6 @@ import 'package:malina_flutter_project/features/qr_scan/presentation/widgets/sca
 import 'package:malina_flutter_project/features/shared/data/mappers/product_mapper.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 
 class QrScanScreen extends StatefulWidget {
   const QrScanScreen({super.key});
@@ -30,7 +29,7 @@ class _QrScanScreenState extends State<QrScanScreen> {
       _isLoading = true;
     });
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     const String qrData = "food123";
 

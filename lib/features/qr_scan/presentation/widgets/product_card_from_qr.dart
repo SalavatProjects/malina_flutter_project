@@ -7,7 +7,7 @@ import 'package:malina_flutter_project/features/shared/domain/entities/product_e
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
 class ProductCardFromQr extends StatelessWidget {
-  ProductEntity product;
+  final ProductEntity product;
   final VoidCallback onPressed;
 
   ProductCardFromQr({
