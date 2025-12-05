@@ -7,6 +7,7 @@ import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

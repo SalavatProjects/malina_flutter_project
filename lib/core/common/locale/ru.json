@@ -14,7 +14,7 @@
     "add" : "добавить",
     "save" : "сохранить",
     "delete" : "удалить",
-    "sign_out" : "выйти",
+    "signOut" : "выйти",
     "scan": "сканировать"
   },
   "validatorErrors": {

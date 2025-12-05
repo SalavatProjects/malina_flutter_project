@@ -110,7 +110,7 @@ class TranslationsActionRu {
 	String get delete => 'удалить';
 
 	/// ru: 'выйти'
-	String get sign_out => 'выйти';
+	String get signOut => 'выйти';
 
 	/// ru: 'сканировать'
 	String get scan => 'сканировать';
@@ -313,7 +313,7 @@ extension on Translations {
 			'action.add' => 'добавить',
 			'action.save' => 'сохранить',
 			'action.delete' => 'удалить',
-			'action.sign_out' => 'выйти',
+			'action.signOut' => 'выйти',
 			'action.scan' => 'сканировать',
 			'validatorErrors.incorrectEmail' => 'Некорректно введен Email',
 			'validatorErrors.emptyField' => 'Поле не должно быть пустым',

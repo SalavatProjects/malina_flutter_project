@@ -134,12 +134,12 @@ return loggedOut(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  success,TResult Function( AuthError error)?  failure,TResult Function()?  loggedOut,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( UserEntity user)?  success,TResult Function( AuthError error)?  failure,TResult Function()?  loggedOut,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AuthInitial() when initial != null:
 return initial();case AuthLoading() when loading != null:
 return loading();case AuthSuccess() when success != null:
-return success(_that.message);case AuthFailure() when failure != null:
+return success(_that.user);case AuthFailure() when failure != null:
 return failure(_that.error);case AuthLoggedOut() when loggedOut != null:
 return loggedOut();case _:
   return orElse();
@@ -159,12 +159,12 @@ return loggedOut();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  success,required TResult Function( AuthError error)  failure,required TResult Function()  loggedOut,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( UserEntity user)  success,required TResult Function( AuthError error)  failure,required TResult Function()  loggedOut,}) {final _that = this;
 switch (_that) {
 case AuthInitial():
 return initial();case AuthLoading():
 return loading();case AuthSuccess():
-return success(_that.message);case AuthFailure():
+return success(_that.user);case AuthFailure():
 return failure(_that.error);case AuthLoggedOut():
 return loggedOut();}
 }
@@ -180,12 +180,12 @@ return loggedOut();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  success,TResult? Function( AuthError error)?  failure,TResult? Function()?  loggedOut,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( UserEntity user)?  success,TResult? Function( AuthError error)?  failure,TResult? Function()?  loggedOut,}) {final _that = this;
 switch (_that) {
 case AuthInitial() when initial != null:
 return initial();case AuthLoading() when loading != null:
 return loading();case AuthSuccess() when success != null:
-return success(_that.message);case AuthFailure() when failure != null:
+return success(_that.user);case AuthFailure() when failure != null:
 return failure(_that.error);case AuthLoggedOut() when loggedOut != null:
 return loggedOut();case _:
   return null;
@@ -275,10 +275,10 @@ String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
 
 
 class AuthSuccess with DiagnosticableTreeMixin implements AuthState {
-  const AuthSuccess(this.message);
+  const AuthSuccess(this.user);
   
 
- final  String message;
+ final  UserEntity user;
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
@@ -291,21 +291,21 @@ $AuthSuccessCopyWith<AuthSuccess> get copyWith => _$AuthSuccessCopyWithImpl<Auth
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'AuthState.success'))
-    ..add(DiagnosticsProperty('message', message));
+    ..add(DiagnosticsProperty('user', user));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthSuccess&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthSuccess&&(identical(other.user, user) || other.user == user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode => Object.hash(runtimeType,user);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'AuthState.success(message: $message)';
+  return 'AuthState.success(user: $user)';
 }
 
 
@@ -316,11 +316,11 @@ abstract mixin class $AuthSuccessCopyWith<$Res> implements $AuthStateCopyWith<$R
   factory $AuthSuccessCopyWith(AuthSuccess value, $Res Function(AuthSuccess) _then) = _$AuthSuccessCopyWithImpl;
 @useResult
 $Res call({
- String message
+ UserEntity user
 });
 
 
-
+$UserEntityCopyWith<$Res> get user;
 
 }
 /// @nodoc
@@ -333,14 +333,23 @@ class _$AuthSuccessCopyWithImpl<$Res>
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
   return _then(AuthSuccess(
-null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
+null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserEntity,
   ));
 }
 
-
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res> get user {
+  
+  return $UserEntityCopyWith<$Res>(_self.user, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
 /// @nodoc

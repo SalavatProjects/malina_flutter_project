@@ -16,7 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
     final UserEntity? user = await authRepository.getCurrentUser();
 
     if (isLoggedIn && user != null) {
-      emit(const AuthState.success("User already logged in"));
+      emit(AuthState.success(user));
     } else {
       emit(const AuthState.loggedOut());
     }
@@ -28,8 +28,8 @@ class AuthCubit extends Cubit<AuthState> {
   }) async {
     emit(const AuthState.loading());
     try {
-      authRepository.register(email: email, password: password);
-      emit(const AuthState.success("Registration successful"));
+      final UserEntity user = await authRepository.register(email: email, password: password);
+      emit(AuthState.success(user));
     } catch (error) {
       if (error is AuthError) {
         emit(AuthState.failure(error));
@@ -51,7 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
       return;
     }
 
-    emit(const AuthState.success("Login successful"));
+    emit(AuthState.success(user));
   }
 
   Future<void> logout() async {

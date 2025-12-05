@@ -50,7 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            appRouter.pushNamed(AppRoutes.home.name);
+            appRouter.pushNamed(AppRoutes.feed.name);
           }
         },
         builder: (context, state) {
