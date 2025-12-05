@@ -75,7 +75,7 @@
   },
   "action": {
     "signIn" : "войти",
-    ...
+    // ...
 ```
 
 ### core/common/theme/app_colors.dart
@@ -89,7 +89,7 @@ abstract class AppColors {
   static const greyMediumDark = Color(0xff49454F);
   static const greyDim = Color(0xff5F5F5F);
   static const grey = Color(0xff777777);
-  ...
+  // ...
 ```
 
 ### app_font_sizes.dart
