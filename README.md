@@ -28,7 +28,7 @@
 
 Проект построен по Clean Architecture:
 
-<img src = "readme_images\structure.png" width="340">
+<img src = "readme_images\structure.png" width="340" alt="">
 
 ## 📁 lib/app
 
@@ -63,6 +63,8 @@
 
 ### core/common/locale/ru.json
 - Файл локализации для русского языка (используется slang).
+
+```markdown
 ```json 
 {
   "common" : {
@@ -74,12 +76,14 @@
     "description": "описание"
   },
   "action": {
-    "signIn" : "войти",
-    // ...
+    "signIn" : "войти"
+//    ... 
 ```
 
 ### core/common/theme/app_colors.dart
 - Цветовая палитра приложения (Color(0xff...)).
+
+```markdown
 ```dart
 abstract class AppColors {
   static const black = Color(0xff000000);
@@ -111,6 +115,7 @@ abstract class AppFontSizes {
 
 - Глобальные текстовые стили (TextStyle…).
 
+```markdown
 ```dart
 abstract class AppStyles {
   static TextStyle robotoW600Black(double fontSize) {
@@ -132,6 +137,7 @@ abstract class AppStyles {
       color: AppColors.white,
     );
   }
+// ...
 ```
 
 ### theme.dart
@@ -184,8 +190,8 @@ auto_id_cart
 - `domain/` — UserEntity, AuthRepository
 - `presentation/` — AuthCubit, LoginScreen, RegisterScreen
 
-<img src="readme_images\login.png" width=200>
-<img src="readme_images\register.png" width=200>
+<img src="readme_images\login.png" width=200 alt="">
+<img src="readme_images\register.png" width=200 alt="">
 
 Пример валидации данных: <br>
 <img src="readme_images\register_valid.png" width=200>
@@ -194,7 +200,7 @@ auto_id_cart
 
 - Виджеты и логика BottomNavigationBar, который работает через ShellRoute.<br>
 
-<img src="readme_images\bottom_nav_bar.png" width=300>
+<img src="readme_images\bottom_nav_bar.png" width=300 alt="">
 
 ## features/cart/
 Работа с корзиной.
@@ -204,8 +210,8 @@ auto_id_cart
 - экраны корзины
 - вспомогательные виджеты (товар в корзине и т.п.)
 
-<img src="readme_images\cart_food.png" width=200>
-<img src="readme_images\cart_beauty.png" width=200>
+<img src="readme_images\cart_food.png" width=200 alt="">
+<img src="readme_images\cart_beauty.png" width=200 alt="">
 
 ## features/feed/
 Экран "Главная лента" (пример контента).<br>
