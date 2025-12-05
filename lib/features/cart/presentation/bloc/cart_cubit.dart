@@ -34,8 +34,11 @@ class CartCubit extends Cubit<CartState> {
 
     await productRepository.addProduct(product);
 
-    final current = (state as CartLoaded).items;
-    final updated = _increaseLocal(current, int.parse(product.id));
+    final current = List<CartItemEntity>.from((state as CartLoaded).items);
+    // final updated = _increaseLocal(current, int.parse(product.id));
+    final updated = current..add(CartItemEntity(
+        productId: int.parse(product.id),
+        quantity: 1));
 
     emit(CartState.loaded(updated));
 

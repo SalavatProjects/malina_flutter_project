@@ -37,7 +37,8 @@ class CartRepositoryImpl implements CartRepository{
     if (index == -1) {
       items.add(CartItemModel(productId: productId, quantity: 1));
     } else {
-      items.add(CartItemModel(productId: productId, quantity: items[index].quantity + 1));
+      final existing = items[index];
+      items[index] = existing.copyWith(quantity: existing.quantity + 1);
     }
 
     await _saveCartItems(items);
@@ -74,7 +75,7 @@ class CartRepositoryImpl implements CartRepository{
     final UserModel? user = await local.getCurrentUser();
     if (user == null) return;
 
-    final List<CartItemModel> items = user.cartItems..removeWhere((e) => e.productId == productId);
+    final List<CartItemModel> items = List.from(user.cartItems)..removeWhere((e) => e.productId == productId);
 
     await _saveCartItems(items);
   }

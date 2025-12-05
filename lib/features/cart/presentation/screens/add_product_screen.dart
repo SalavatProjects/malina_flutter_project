@@ -48,6 +48,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(
         onActionPressed: () async {
           final result = await appRouter.pushNamed(AppRoutes.qrScanPage.name);

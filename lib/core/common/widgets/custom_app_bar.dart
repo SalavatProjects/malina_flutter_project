@@ -38,6 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleTextStyle: AppStyles.wixMadeforDisplayW700AlmostBlack(
         AppFontSizes.sp20,
       ),
+      scrolledUnderElevation: 0,
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 20.w),
