@@ -117,7 +117,7 @@ abstract class AppFontSizes {
 
 - Глобальные текстовые стили (TextStyle…).
 
-```markdown
+
 ```dart
 abstract class AppStyles {
   static TextStyle robotoW600Black(double fontSize) {
