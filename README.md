@@ -64,11 +64,11 @@
 ### core/common/locale/ru.json
 - Файл локализации для русского языка (используется slang).
 
-```markdown
+
 ```json 
 {
-  "common" : {
-    "all" : "всего",
+  "common": {
+    "all": "всего",
     "category": "категория",
     "subcategory": "подкатегория",
     "name": "название",
@@ -76,8 +76,10 @@
     "description": "описание"
   },
   "action": {
-    "signIn" : "войти"
-//    ... 
+    "signIn": "войти",
+    "_comment": "..."
+  }
+}
 ```
 
 ### core/common/theme/app_colors.dart

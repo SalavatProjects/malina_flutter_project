@@ -93,7 +93,7 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
                   text: t.bottomNavBarContent.profile.toCapitalize(),
                   isActive: currentIndex == 3,
                   onPressed: () {
-                    appRouter.goNamed(AppRoutes.profile.name);
+                    appRouter.pushNamed(AppRoutes.profile.name);
                   },
                 ),
                 NavBarItem(
