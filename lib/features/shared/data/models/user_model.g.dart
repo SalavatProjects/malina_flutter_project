@@ -15,7 +15,9 @@ _UserModel _$UserModelFromJson(Map<String, dynamic> json) => _UserModel(
           ?.map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
-  loginAttempts: (json['loginAttempts'] as num?)?.toInt() ?? 0,
+  loginAttemptsLeft:
+      (json['loginAttemptsLeft'] as num?)?.toInt() ??
+      AppConstants.maxAvailableLoginAttempts,
 );
 
 Map<String, dynamic> _$UserModelToJson(_UserModel instance) =>
@@ -24,5 +26,5 @@ Map<String, dynamic> _$UserModelToJson(_UserModel instance) =>
       'email': instance.email,
       'passwordHash': instance.passwordHash,
       'cartItems': instance.cartItems,
-      'loginAttempts': instance.loginAttempts,
+      'loginAttemptsLeft': instance.loginAttemptsLeft,
     };

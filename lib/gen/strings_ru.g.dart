@@ -226,20 +226,23 @@ class TranslationsAuthErrorsRu {
 
 	// Translations
 
-	/// ru: 'Пользователь не найден'
-	String get userNotFound => 'Пользователь не найден';
+	/// ru: 'Пользователь не найден.'
+	String get userNotFound => 'Пользователь не найден.';
 
-	/// ru: 'Email или пароль неверны'
-	String get invalidEmailOrPassword => 'Email или пароль неверны';
+	/// ru: 'Email или пароль неверны.'
+	String get invalidEmailOrPassword => 'Email или пароль неверны.';
 
-	/// ru: 'Слишком много попыток входа'
-	String get tooManyAttempts => 'Слишком много попыток входа';
+	/// ru: 'Слишком много попыток входа. Аккаунт данного пользователя удален.'
+	String get tooManyAttempts => 'Слишком много попыток входа. Аккаунт данного пользователя удален.';
 
-	/// ru: 'Этот email уже зарегистрирован'
-	String get emailAlreadyExists => 'Этот email уже зарегистрирован';
+	/// ru: 'Этот email уже зарегистрирован.'
+	String get emailAlreadyExists => 'Этот email уже зарегистрирован.';
 
-	/// ru: 'Неизвестная ошибка'
-	String get unknown => 'Неизвестная ошибка';
+	/// ru: 'Неверный пароль. Осталось попыток ${attemptsLeft: int}'
+	String invalidAttemptsLeft({required int attemptsLeft}) => 'Неверный пароль. Осталось попыток ${attemptsLeft}';
+
+	/// ru: 'Неизвестная ошибка.'
+	String get unknown => 'Неизвестная ошибка.';
 }
 
 // Path: feed.food
@@ -322,11 +325,12 @@ extension on Translations {
 			'auth.mail' => 'почта',
 			'auth.password' => 'пароль',
 			'auth.repeatPassword' => 'Повторите пароль',
-			'auth.errors.userNotFound' => 'Пользователь не найден',
-			'auth.errors.invalidEmailOrPassword' => 'Email или пароль неверны',
-			'auth.errors.tooManyAttempts' => 'Слишком много попыток входа',
-			'auth.errors.emailAlreadyExists' => 'Этот email уже зарегистрирован',
-			'auth.errors.unknown' => 'Неизвестная ошибка',
+			'auth.errors.userNotFound' => 'Пользователь не найден.',
+			'auth.errors.invalidEmailOrPassword' => 'Email или пароль неверны.',
+			'auth.errors.tooManyAttempts' => 'Слишком много попыток входа. Аккаунт данного пользователя удален.',
+			'auth.errors.emailAlreadyExists' => 'Этот email уже зарегистрирован.',
+			'auth.errors.invalidAttemptsLeft' => ({required int attemptsLeft}) => 'Неверный пароль. Осталось попыток ${attemptsLeft}',
+			'auth.errors.unknown' => 'Неизвестная ошибка.',
 			'bottomNavBarContent.feed' => 'лента',
 			'bottomNavBarContent.favorites' => 'избранное',
 			'bottomNavBarContent.profile' => 'профиль',

@@ -28,11 +28,12 @@
     "password" : "пароль",
     "repeatPassword": "Повторите пароль",
     "errors": {
-      "userNotFound": "Пользователь не найден",
-      "invalidEmailOrPassword": "Email или пароль неверны",
-      "tooManyAttempts": "Слишком много попыток входа",
-      "emailAlreadyExists": "Этот email уже зарегистрирован",
-      "unknown": "Неизвестная ошибка"
+      "userNotFound": "Пользователь не найден.",
+      "invalidEmailOrPassword": "Email или пароль неверны.",
+      "tooManyAttempts": "Слишком много попыток входа. Аккаунт данного пользователя удален.",
+      "emailAlreadyExists": "Этот email уже зарегистрирован.",
+      "invalidAttemptsLeft": "Неверный пароль. Осталось попыток ${attemptsLeft: int}",
+      "unknown": "Неизвестная ошибка."
     }
   },
   "bottomNavBarContent" : {

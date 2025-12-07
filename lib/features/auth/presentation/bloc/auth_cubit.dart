@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:malina_flutter_project/core/errors/auth_exception.dart';
 import 'package:malina_flutter_project/features/auth/domain/enum/auth_error.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/user_entity.dart';
+import 'package:malina_flutter_project/gen/strings.g.dart';
 
 import 'auth_state.dart';
 
@@ -31,26 +33,40 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthState.success(user));
     } catch (error) {
       if (error is AuthError) {
-        emit(AuthState.failure(error));
+        emit(AuthState.failure(error: error));
       } else {
-        emit(const AuthState.failure(AuthError.unknown));
+        emit(const AuthState.failure(error:  AuthError.unknown));
       }
     }
   }
 
   Future<void> login({required String email, required String password}) async {
     emit(const AuthState.loading());
-    final UserEntity? user = await authRepository.login(
-      email: email,
-      password: password,
-    );
+    try {
+      final UserEntity? user = await authRepository.login(
+        email: email,
+        password: password,
+      );
 
-    if (user == null) {
-      emit(const AuthState.failure(AuthError.invalidEmailOrPassword));
-      return;
+      if (user == null) {
+        emit(const AuthState.failure(error:  AuthError.invalidEmailOrPassword));
+        return;
+      }
+
+      emit(AuthState.success(user));
+    } catch(error) {
+      if (error is AuthException) {
+        if (error.attemptsLeft > 0) {
+          emit(AuthState.failure(
+              error: error.error,
+              message:  t.auth.errors.invalidAttemptsLeft(attemptsLeft: error.attemptsLeft)));
+        } else {
+          emit(AuthState.failure(error: error.error));
+        }
+      } else {
+        emit(const AuthState.failure(error: AuthError.unknown));
+      }
     }
-
-    emit(AuthState.success(user));
   }
 
   Future<void> logout() async {

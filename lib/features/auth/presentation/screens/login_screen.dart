@@ -100,8 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             context.read<AuthCubit>().login(
-                              email: _emailTextEditingController.text,
-                              password: _passwordTextEditingController.text,
+                              email: _emailTextEditingController.text.trim(),
+                              password: _passwordTextEditingController.text.trim(),
                             );
                           }
                         },
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: EdgeInsetsGeometry.only(top: 16.w),
                           child: Text(
-                            state.error.message,
+                            state.message ?? state.error.message,
                             style: AppStyles.robotoW400AlmostBlack(
                               AppFontSizes.sp14,
                             ).copyWith(color: AppColors.error),

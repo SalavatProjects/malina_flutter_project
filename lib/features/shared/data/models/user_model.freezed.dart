@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel implements DiagnosticableTreeMixin {
 
- String get id; String get email; String get passwordHash; List<CartItemModel> get cartItems; int get loginAttempts;
+ String get id; String get email; String get passwordHash; List<CartItemModel> get cartItems; int get loginAttemptsLeft;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $UserModelCopyWith<UserModel> get copyWith => _$UserModelCopyWithImpl<UserModel>
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'UserModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('passwordHash', passwordHash))..add(DiagnosticsProperty('cartItems', cartItems))..add(DiagnosticsProperty('loginAttempts', loginAttempts));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('passwordHash', passwordHash))..add(DiagnosticsProperty('cartItems', cartItems))..add(DiagnosticsProperty('loginAttemptsLeft', loginAttemptsLeft));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other.cartItems, cartItems)&&(identical(other.loginAttemptsLeft, loginAttemptsLeft) || other.loginAttemptsLeft == loginAttemptsLeft));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(cartItems),loginAttempts);
+int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(cartItems),loginAttemptsLeft);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'UserModel(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttempts: $loginAttempts)';
+  return 'UserModel(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttemptsLeft: $loginAttemptsLeft)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String passwordHash, List<CartItemModel> cartItems, int loginAttempts
+ String id, String email, String passwordHash, List<CartItemModel> cartItems, int loginAttemptsLeft
 });
 
 
@@ -71,13 +71,13 @@ class _$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttempts = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttemptsLeft = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,passwordHash: null == passwordHash ? _self.passwordHash : passwordHash // ignore: cast_nullable_to_non_nullable
 as String,cartItems: null == cartItems ? _self.cartItems : cartItems // ignore: cast_nullable_to_non_nullable
-as List<CartItemModel>,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
+as List<CartItemModel>,loginAttemptsLeft: null == loginAttemptsLeft ? _self.loginAttemptsLeft : loginAttemptsLeft // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -160,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttempts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttemptsLeft)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);case _:
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttemptsLeft);case _:
   return orElse();
 
 }
@@ -181,10 +181,10 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.lo
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttempts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttemptsLeft)  $default,) {final _that = this;
 switch (_that) {
 case _UserModel():
-return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);}
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttemptsLeft);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -198,10 +198,10 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.lo
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttempts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String passwordHash,  List<CartItemModel> cartItems,  int loginAttemptsLeft)?  $default,) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
-return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttempts);case _:
+return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.loginAttemptsLeft);case _:
   return null;
 
 }
@@ -213,7 +213,7 @@ return $default(_that.id,_that.email,_that.passwordHash,_that.cartItems,_that.lo
 @JsonSerializable()
 
 class _UserModel with DiagnosticableTreeMixin implements UserModel {
-  const _UserModel({required this.id, required this.email, required this.passwordHash, final  List<CartItemModel> cartItems = const [], this.loginAttempts = 0}): _cartItems = cartItems;
+  const _UserModel({required this.id, required this.email, required this.passwordHash, final  List<CartItemModel> cartItems = const [], this.loginAttemptsLeft = AppConstants.maxAvailableLoginAttempts}): _cartItems = cartItems;
   factory _UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
 @override final  String id;
@@ -226,7 +226,7 @@ class _UserModel with DiagnosticableTreeMixin implements UserModel {
   return EqualUnmodifiableListView(_cartItems);
 }
 
-@override@JsonKey() final  int loginAttempts;
+@override@JsonKey() final  int loginAttemptsLeft;
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
@@ -242,21 +242,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'UserModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('passwordHash', passwordHash))..add(DiagnosticsProperty('cartItems', cartItems))..add(DiagnosticsProperty('loginAttempts', loginAttempts));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('email', email))..add(DiagnosticsProperty('passwordHash', passwordHash))..add(DiagnosticsProperty('cartItems', cartItems))..add(DiagnosticsProperty('loginAttemptsLeft', loginAttemptsLeft));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&(identical(other.loginAttempts, loginAttempts) || other.loginAttempts == loginAttempts));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.passwordHash, passwordHash) || other.passwordHash == passwordHash)&&const DeepCollectionEquality().equals(other._cartItems, _cartItems)&&(identical(other.loginAttemptsLeft, loginAttemptsLeft) || other.loginAttemptsLeft == loginAttemptsLeft));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(_cartItems),loginAttempts);
+int get hashCode => Object.hash(runtimeType,id,email,passwordHash,const DeepCollectionEquality().hash(_cartItems),loginAttemptsLeft);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'UserModel(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttempts: $loginAttempts)';
+  return 'UserModel(id: $id, email: $email, passwordHash: $passwordHash, cartItems: $cartItems, loginAttemptsLeft: $loginAttemptsLeft)';
 }
 
 
@@ -267,7 +267,7 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String passwordHash, List<CartItemModel> cartItems, int loginAttempts
+ String id, String email, String passwordHash, List<CartItemModel> cartItems, int loginAttemptsLeft
 });
 
 
@@ -284,13 +284,13 @@ class __$UserModelCopyWithImpl<$Res>
 
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttempts = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? passwordHash = null,Object? cartItems = null,Object? loginAttemptsLeft = null,}) {
   return _then(_UserModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,passwordHash: null == passwordHash ? _self.passwordHash : passwordHash // ignore: cast_nullable_to_non_nullable
 as String,cartItems: null == cartItems ? _self._cartItems : cartItems // ignore: cast_nullable_to_non_nullable
-as List<CartItemModel>,loginAttempts: null == loginAttempts ? _self.loginAttempts : loginAttempts // ignore: cast_nullable_to_non_nullable
+as List<CartItemModel>,loginAttemptsLeft: null == loginAttemptsLeft ? _self.loginAttemptsLeft : loginAttemptsLeft // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

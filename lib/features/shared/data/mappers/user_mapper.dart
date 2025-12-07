@@ -9,7 +9,7 @@ extension UserModelToEntity on UserModel {
       email: email,
       passwordHash: passwordHash,
       cartItems: cartItems.map((e) => e.toEntity()).toList(),
-      loginAttempts: loginAttempts,
+      loginAttemptsLeft: loginAttemptsLeft,
     );
   }
 }
@@ -21,7 +21,7 @@ extension UserEntityToModel on UserEntity {
       email: email,
       passwordHash: passwordHash,
       cartItems: cartItems.map((e) => e.toModel()).toList(),
-      loginAttempts: loginAttempts,
+      loginAttemptsLeft: loginAttemptsLeft,
     );
   }
 }

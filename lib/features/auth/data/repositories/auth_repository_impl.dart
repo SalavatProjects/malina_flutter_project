@@ -1,3 +1,5 @@
+import 'package:malina_flutter_project/core/common/constants/app_constants.dart';
+import 'package:malina_flutter_project/core/errors/auth_exception.dart';
 import 'package:malina_flutter_project/features/auth/data/datasources/user_local_data_source.dart';
 import 'package:malina_flutter_project/features/auth/domain/enum/auth_error.dart';
 import 'package:malina_flutter_project/features/auth/domain/repositories/auth_repository.dart';
@@ -6,6 +8,7 @@ import 'package:malina_flutter_project/features/shared/data/models/user_model.da
 import 'package:malina_flutter_project/features/shared/domain/entities/user_entity.dart';
 import 'package:collection/collection.dart';
 import 'package:bcrypt/bcrypt.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final UserLocalDataSource local;
@@ -42,13 +45,18 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (!isValid) {
       final UserModel updatedUser = user.copyWith(
-        loginAttempts: user.loginAttempts + 1,
+        loginAttemptsLeft: user.loginAttemptsLeft - 1,
       );
       await local.updateUser(updatedUser);
-      return null;
+      if (updatedUser.loginAttemptsLeft == 0) {
+        await deleteUser(updatedUser.id);
+        throw AuthException(error: AuthError.tooManyAttempts, attemptsLeft: 0);
+      } else {
+        throw AuthException(error: AuthError.emailAlreadyExists, attemptsLeft: updatedUser.loginAttemptsLeft);
+      }
     }
 
-    final UserModel loggedInUser = user.copyWith(loginAttempts: 0);
+    final UserModel loggedInUser = user.copyWith(loginAttemptsLeft: AppConstants.maxAvailableLoginAttempts);
     await local.updateUser(loggedInUser);
     await local.setCurrentUser(loggedInUser.id);
     return loggedInUser.toEntity();
@@ -81,7 +89,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> deleteUser(String userId) async {
+    final prefs = await SharedPreferences.getInstance();
     await local.deleteUser(userId);
+    await prefs.clear();
   }
 
 }

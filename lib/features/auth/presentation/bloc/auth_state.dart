@@ -10,7 +10,10 @@ sealed class AuthState with _$AuthState {
   const factory AuthState.initial() = AuthInitial;
   const factory AuthState.loading() = AuthLoading;
   const factory AuthState.success(UserEntity user) = AuthSuccess;
-  const factory AuthState.failure(AuthError error) = AuthFailure;
+  const factory AuthState.failure({
+    required AuthError error,
+    String? message,
+  }) = AuthFailure;
   const factory AuthState.loggedOut() = AuthLoggedOut;
 }
 

@@ -126,10 +126,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           final ProductEntity entity = ProductEntity(
                               id: productId.toString(),
                               category: _selectedProductCategory,
-                              subcategory: _subcategoryTextEditingController.text,
-                              name: _nameTextEditingController.text,
-                              description: _descriptionTextEditingController.text,
-                              price: double.parse(_priceTextEditingController.text),
+                              subcategory: _subcategoryTextEditingController.text.trim(),
+                              name: _nameTextEditingController.text.trim(),
+                              description: _descriptionTextEditingController.text.trim(),
+                              price: double.parse(_priceTextEditingController.text.trim()),
                           );
 
                           context.pop(entity);

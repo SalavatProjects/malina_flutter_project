@@ -10,6 +10,6 @@ sealed class UserEntity with _$UserEntity {
     required String email,
     required String passwordHash,
     required List<CartItemEntity> cartItems,
-    required int loginAttempts,
+    required int loginAttemptsLeft,
 }) = _UserEntity;
 }

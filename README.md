@@ -24,6 +24,41 @@
 
 ---
 
+# 📦 Генерация кода (build_runner и build.yaml)
+
+Приложение использует code generation для:
+- Freezed (*.freezed.dart, *.g.dart)
+- JSON сериализации (*.g.dart)
+- slang локализации (strings.g.dart)
+- flutter_gen (assets.gen.dart, fonts.gen.dart)
+
+Некоторые настройки генерации собраны в файле `build.yaml`:
+```yaml
+targets:
+  $default:
+    builders:
+      flutter_gen_runner:
+        options:
+          output: lib/gen/
+          line_length: 120
+          integrations:
+            flutter_svg: true
+
+      slang_build_runner:
+        options:
+          base_locale: ru
+          input_directory: lib/core/common/locale/
+          input_file_pattern: .json
+          output_directory: lib/gen/
+          output_file_name: strings.g.dart
+          flutter_integration: true
+          getter_method:
+            style: camel_case
+```
+
+# Адаптивный дизайн
+Для адаптивного дизайна применяется пакет `flutter_screenutil: 5.9.3`
+
 # 📁 Архитектура проекта
 
 Проект построен по Clean Architecture:
@@ -140,6 +175,7 @@ abstract class AppStyles {
     );
   }
 // ...
+}
 ```
 
 ### theme.dart
