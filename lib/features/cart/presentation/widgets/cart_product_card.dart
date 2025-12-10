@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/cart_item_entity.dart';
 import 'package:malina_flutter_project/features/shared/domain/entities/product_entity.dart';
@@ -49,7 +50,7 @@ class CartProductCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(context.isLandscape ? 60.r : 20.r),
         color: AppColors.white
       ),
       child: Column(
@@ -57,7 +58,8 @@ class CartProductCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(productsBySubcategory[0].subcategory, style: AppStyles.wixMadeforDisplayW400GreyDim(AppFontSizes.sp16),),
+              Text(productsBySubcategory[0].subcategory, style: AppStyles.wixMadeforDisplayW400GreyDim(
+                  context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),),
               SizedBox(width: 4.w,),
               Icon(Icons.chevron_right_outlined, size: 20.w, color: AppColors.greyDim,)
             ],
@@ -95,9 +97,11 @@ class CartProductCard extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width * 0.32,
-                                      child: Text(productsBySubcategory[index].name, style: AppStyles.wixMadeforDisplayW400AlmostBlack(AppFontSizes.sp14),)),
+                                      child: Text(productsBySubcategory[index].name, style: AppStyles.wixMadeforDisplayW400AlmostBlack(
+                                          context.isLandscape ? AppFontSizes.sp18 :  AppFontSizes.sp14),)),
 
-                                  Text("${productsBySubcategory[index].price} C", style: AppStyles.wixMadeforDisplayW500AlmostBlack(AppFontSizes.sp14),)
+                                  Text("${productsBySubcategory[index].price} C", style: AppStyles.wixMadeforDisplayW500AlmostBlack(
+                                      context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14),)
                                 ],
                               ),
                             ),
@@ -105,7 +109,8 @@ class CartProductCard extends StatelessWidget {
                             Expanded(
                               child: SizedBox(
                                   width: MediaQuery.of(context).size.width * 0.3,
-                                  child: Text(productsBySubcategory[index].description, style: AppStyles.wixMadeforDisplayW400Grey(AppFontSizes.sp12),)),
+                                  child: Text(productsBySubcategory[index].description, style: AppStyles.wixMadeforDisplayW400Grey(
+                                      context.isLandscape ? AppFontSizes.sp16 : AppFontSizes.sp12),)),
                             ),
                             // const Spacer(),
                             Expanded(
@@ -124,7 +129,9 @@ class CartProductCard extends StatelessWidget {
                                   CupertinoButton(
                                       padding: EdgeInsets.zero,
                                       sizeStyle: CupertinoButtonSize.small,
-                                      child: SvgPicture.asset(Assets.icons.delete.path), onPressed: () {
+                                      child: SvgPicture.asset(Assets.icons.delete.path,
+                                      width: 34.w,
+                                      ), onPressed: () {
                                         onRemovePressed(int.parse(productsBySubcategory[index].id));
                                   })
                                 ],
@@ -176,10 +183,10 @@ class _IncreaseDecreaseButton extends StatelessWidget {
           width: 34.w,
           height: 34.w,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(9.r),
+            borderRadius: BorderRadius.circular(context.isLandscape ? 18.r : 9.r),
             color: AppColors.softGreyBlue
           ),
-          child: Icon(icon, size: 13.w, color: AppColors.black,),
+          child: Icon(icon, size: context.isLandscape ? 16.w : 13.w, color: AppColors.black,),
         ), onPressed: onPressed);
   }
 }
@@ -218,7 +225,8 @@ class _AdditivitiesButton extends StatelessWidget {
               ), onPressed: onPressed,
           ),
           SizedBox(width: 8.w,),
-          Text(t.cart.additivies.toCapitalize(), style: AppStyles.wixMadeforDisplayW400AlmostBlack(AppFontSizes.sp16),)
+          Text(t.cart.additivies.toCapitalize(), style: AppStyles.wixMadeforDisplayW400AlmostBlack(
+              context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),)
         ],
       ),
     );
@@ -238,14 +246,15 @@ class _TotalCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(context.isLandscape ? 36.r : 12.r),
         color: AppColors.pink,
       ),
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [
-          Text(t.cart.total.toCapitalize(), style: AppStyles.wixMadeforDisplayW500White(AppFontSizes.sp16),),
-          Text("${totalPrice.toStringAsFixed(2)} C", style: AppStyles.wixMadeforDisplayW500White(AppFontSizes.sp16),)
+          Text(t.cart.total.toCapitalize(), style: AppStyles.wixMadeforDisplayW500White(context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),),
+          Text("${totalPrice.toStringAsFixed(2)} C", style: AppStyles.wixMadeforDisplayW500White(
+              context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),)
         ],
       ),
     );

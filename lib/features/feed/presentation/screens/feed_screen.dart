@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/feed/presentation/widgets/feed_product_banner.dart';
 import 'package:malina_flutter_project/features/feed/presentation/widgets/scan_banner.dart';
@@ -34,7 +35,6 @@ class _FeedScreenState extends State<FeedScreen> {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 12.w, horizontal: 20.w),
           child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 SearchInMalina(
@@ -59,6 +59,8 @@ class _FeedScreenState extends State<FeedScreen> {
                 ),
                 SizedBox(height: 30.w,),
                 SoonInMalinaItems(),
+                if (context.isLandscape)
+                  SizedBox(height: 38.w,)
               ],
             ),
           ),

@@ -36,7 +36,7 @@ abstract class _AppCupertinoButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: textStyle.copyWith(fontSize: context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14),
+            style: textStyle.copyWith(fontSize: context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp14),
           ),
         ),
       ),

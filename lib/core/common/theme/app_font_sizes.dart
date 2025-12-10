@@ -9,4 +9,5 @@ abstract class AppFontSizes {
   static final sp18 = 18.sp;
   static final sp20 = 20.sp;
   static final sp22 = 22.sp;
+  static final sp23 = 23.sp;
 }

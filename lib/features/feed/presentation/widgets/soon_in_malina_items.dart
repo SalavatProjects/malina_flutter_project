@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
@@ -23,7 +24,7 @@ class SoonInMalinaItems extends StatelessWidget {
       children: [
         Text(
           t.feed.soonInMalina.name,
-          style: AppStyles.wixMadeforDisplayW500AlmostBlack(AppFontSizes.sp17).copyWith(
+          style: AppStyles.wixMadeforDisplayW500AlmostBlack(context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp17).copyWith(
             color: AppColors.black,
           ),
         ),
@@ -39,13 +40,13 @@ class SoonInMalinaItems extends StatelessWidget {
                 height: 86.w,
                 padding: EdgeInsets.symmetric(vertical: 6.w),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
+                  borderRadius: BorderRadius.circular(context.isLandscape ? 30.r : 10.r),
                   color: _itemsColor[index],
                 ),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(t.feed.soonInMalina.titles[index].toCapitalize(),
-                  style: AppStyles.wixMadeforDisplayW400Black(AppFontSizes.sp12),
+                  style: AppStyles.wixMadeforDisplayW400Black(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp12),
                   ),
                 ),
               ),

@@ -32,7 +32,7 @@ class ScanBanner extends StatelessWidget {
           Expanded(
             child: Text(
               t.feed.scanQr,
-              style: AppStyles.wixMadeforDisplayW500White(AppFontSizes.sp16),
+              style: AppStyles.wixMadeforDisplayW500White(context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),
               textAlign: TextAlign.left,
             ),
           ),

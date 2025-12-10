@@ -7,6 +7,7 @@ import 'package:malina_flutter_project/core/common/constants/app_constants.dart'
 import 'package:malina_flutter_project/core/common/widgets/app_buttons.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_text_form_field.dart';
 import 'package:malina_flutter_project/core/common/widgets/custom_app_bar.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/core/services/id_generator.dart';
 import 'package:malina_flutter_project/core/utils/validators/empty_field_validator.dart';
@@ -48,8 +49,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: CustomAppBar(
+      resizeToAvoidBottomInset: true,
+      appBar: context.isLandscape ? null : CustomAppBar(
         onActionPressed: () async {
           final result = await appRouter.pushNamed(AppRoutes.qrScanPage.name);
           if (result is ProductEntity) {
@@ -68,9 +69,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
               children: [
                 const Positioned.fill(child: CartBackgroundWidget()),
                 SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                    height: context.isLandscape ? MediaQuery.of(context).size.width * 1.2 : MediaQuery.of(context).size.height * 0.8,
                     child: Column(
                       children: [
                         CategoryDropdownMenu(
@@ -111,31 +111,29 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             },
                             onTextChanged: (String value) {},
                         ),
-                        // const Spacer(),
+                        const Spacer(),
+                        AppPrimaryButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                final int productId = await IdGenerator.next(AppConstants.productsCollectionName);
+                                final ProductEntity entity = ProductEntity(
+                                  id: productId.toString(),
+                                  category: _selectedProductCategory,
+                                  subcategory: _subcategoryTextEditingController.text.trim(),
+                                  name: _nameTextEditingController.text.trim(),
+                                  description: _descriptionTextEditingController.text.trim(),
+                                  price: double.parse(_priceTextEditingController.text.trim()),
+                                );
+
+                                context.pop(entity);
+                              }
+                            }, text: t.action.save.toCapitalize()),
+                        SizedBox(height: 20.w,)
 
                       ],
                     ),
                   ),
                 ),
-                Align(
-                  alignment: const Alignment(0, 0.9),
-                  child: AppPrimaryButton(
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          final int productId = await IdGenerator.next(AppConstants.productsCollectionName);
-                          final ProductEntity entity = ProductEntity(
-                              id: productId.toString(),
-                              category: _selectedProductCategory,
-                              subcategory: _subcategoryTextEditingController.text.trim(),
-                              name: _nameTextEditingController.text.trim(),
-                              description: _descriptionTextEditingController.text.trim(),
-                              price: double.parse(_priceTextEditingController.text.trim()),
-                          );
-
-                          context.pop(entity);
-                        }
-                      }, text: t.action.save.toCapitalize()),
-                )
               ],
             ),
           ),

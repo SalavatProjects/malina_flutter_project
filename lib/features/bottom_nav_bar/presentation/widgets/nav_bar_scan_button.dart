@@ -34,7 +34,7 @@ class NavBarScanButton extends StatelessWidget {
             isToBack
                 ? Assets.icons.categoryActive.path
                 : Assets.icons.categoryInactive.path,
-            width: context.isLandscape ? 30.w : 48.w,
+            width: context.isLandscape ? 28.w : 48.w,
             colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
           ),
         ),

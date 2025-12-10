@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 
 class CartCategoryButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -23,7 +24,7 @@ class CartCategoryButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 10.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(context.isLandscape ? 60.r :  20.r),
           color: isActive ? AppColors.pink : AppColors.white,
           border: isActive
               ? null
@@ -33,7 +34,7 @@ class CartCategoryButton extends StatelessWidget {
           child: Text(
             text,
             style: AppStyles.wixMadeforDisplayW500White(
-              AppFontSizes.sp16,
+              context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16,
             ).copyWith(color: isActive ? AppColors.white : AppColors.greyDark),
           ),
         ),

@@ -5,11 +5,12 @@ import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_buttons.dart';
 import 'package:malina_flutter_project/core/common/widgets/custom_app_bar.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
-import '../../../auth/presentation/bloc/auth_state.dart';
+import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_state.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -42,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                     Text(
                       state.user.email,
                       style: AppStyles.wixMadeforDisplayW700AlmostBlack(
-                        AppFontSizes.sp20,
+                        context.isLandscape ? AppFontSizes.sp22 : AppFontSizes.sp20,
                       ),
                     ),
                     const Spacer(),
@@ -52,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                       },
                       text: t.action.delete.toCapitalize(),
                     ),
-                    SizedBox(height: 60.w),
+                    SizedBox(height: context.isLandscape ? 30.w : 60.w),
                   ],
                 );
               } else {

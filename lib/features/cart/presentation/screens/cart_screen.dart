@@ -5,6 +5,7 @@ import 'package:malina_flutter_project/app/di/di.dart';
 import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/common/widgets/custom_app_bar.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:malina_flutter_project/features/cart/presentation/widgets/cart_category_button.dart';
@@ -163,8 +164,9 @@ class _CartScreenState extends State<CartScreen> {
                                               .toCapitalize(),
                                         ),
                                         style: AppStyles.robotoW400AlmostBlack(
-                                          AppFontSizes.sp16,
+                                          context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16,
                                         ),
+                                        textAlign: TextAlign.center,
                                       ),
                                     );
                                   }
@@ -187,11 +189,13 @@ class _CartScreenState extends State<CartScreen> {
                         );
                       },
                     ),
+                    if (context.isLandscape)
+                      SizedBox(height: 30.w,)
                   ],
                 ),
               ),
               Align(
-                alignment: const Alignment(1, 0.7),
+                alignment: Alignment(1, context.isLandscape ? 0.3 : 0.7),
                 child: FloatingActionButton(
                   onPressed: () async {
                     final result = await appRouter.pushNamed(

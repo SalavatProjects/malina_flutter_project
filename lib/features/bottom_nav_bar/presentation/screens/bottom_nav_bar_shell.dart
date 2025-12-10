@@ -50,6 +50,7 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
       GoRouterState.of(context).uri.toString(),
     );
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         clipBehavior: Clip.none,
         children: [
