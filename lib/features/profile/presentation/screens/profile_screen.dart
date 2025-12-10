@@ -5,9 +5,12 @@ import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_buttons.dart';
 import 'package:malina_flutter_project/core/common/widgets/custom_app_bar.dart';
+import 'package:malina_flutter_project/core/common/widgets/show_app_dialog.dart';
 import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:malina_flutter_project/features/profile/presentation/widgets/clear_cart_items_dialog.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
 import 'package:malina_flutter_project/features/auth/presentation/bloc/auth_state.dart';
@@ -20,10 +23,18 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         onActionPressed: () {
-          context.read<AuthCubit>().logout();
+          showAppDialog(context: context, child: ClearCartItemsDialog(
+              onYesPressed: () async {
+                await context.read<CartCubit>().clear();
+                await context.read<AuthCubit>().logout();
+              },
+              onNoPressed: () {
+                context.read<AuthCubit>().logout();
+              }));
+
         },
         actionText: t.action.signOut.toCapitalize(),
-        title: t.profile.toCapitalize(),
+        title: t.profile.name.toCapitalize(),
       ),
       body: SafeArea(
         child: Padding(
@@ -43,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                     Text(
                       state.user.email,
                       style: AppStyles.wixMadeforDisplayW700AlmostBlack(
-                        context.isLandscape ? AppFontSizes.sp22 : AppFontSizes.sp20,
+                        context.isLandscape ? AppFontSizes.sp22 : AppFontSizes.sp16,
                       ),
                     ),
                     const Spacer(),

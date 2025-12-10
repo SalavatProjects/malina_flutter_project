@@ -6,6 +6,7 @@ abstract class AppConstants {
   static const int minPasswordLength = 8;
 
   static const int maxTextFieldLength = 50;
+  static const int maxLongTextFieldLength = 300;
 
   static const String productsCollectionName = "products";
 

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
@@ -24,13 +25,13 @@ class CartContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
-      width: 70.w,
-      height: isOpen ? 136.w : 0,
+      width: context.isLandscape ? 50.w : 70.w,
+      height: isOpen ? context.isLandscape ? 100.w : 136.w : 0,
       padding: EdgeInsets.only(top: 5.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(50.r),
-          topLeft: Radius.circular(50.r),
+          topRight: Radius.circular(context.isLandscape ? 120.r : 50.r),
+          topLeft: Radius.circular(context.isLandscape ? 120.r : 50.r),
         ),
         color: AppColors.white,
         boxShadow: [
@@ -80,8 +81,8 @@ class _CircleButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       sizeStyle: CupertinoButtonSize.small,
       child: Container(
-        width: 60.w,
-        height: 60.w,
+        width: context.isLandscape ? 40.w : 60.w,
+        height: context.isLandscape ? 40.w : 60.w,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.greySoft,
@@ -89,8 +90,8 @@ class _CircleButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: .spaceEvenly,
           children: [
-            SvgPicture.asset(iconPath, width: 22.w, colorFilter: const ColorFilter.mode(AppColors.almostBlack, BlendMode.srcIn),),
-            Text(text, style: AppStyles.wixMadeforDisplayW400AlmostBlack(AppFontSizes.sp10),)
+            SvgPicture.asset(iconPath, width: context.isLandscape ? 18.w : 22.w, colorFilter: const ColorFilter.mode(AppColors.almostBlack, BlendMode.srcIn),),
+            Text(text, style: AppStyles.wixMadeforDisplayW400AlmostBlack(context.isLandscape ? AppFontSizes.sp12 : AppFontSizes.sp10),)
           ],
         ),
       ),

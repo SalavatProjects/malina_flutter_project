@@ -27,11 +27,11 @@ abstract class _AppCupertinoButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 40.w,
+        height: context.isLandscape ? 30.w : 40.w,
         // padding: EdgeInsets.symmetric(vertical: 10.w),
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(context.isLandscape ? 124.r : 24.r),
+          borderRadius: BorderRadius.circular(context.isLandscape ? 72.r : 24.r),
         ),
         child: Center(
           child: Text(

@@ -77,147 +77,111 @@ class _QrScanScreenState extends State<QrScanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // _simulateScan(); // TODO: use this for check productCard
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: context.isLandscape ? MediaQuery.of(context).size.width * 0.46 : MediaQuery.of(context).size.height,
-            child: Stack(
-              children: [
-                MobileScanner(
-                  controller: _mobileScannerController,
-                  fit: BoxFit.cover,
-                  onDetect: (BarcodeCapture result) async {
-                    try {
-                      final String? value = result.barcodes.first.rawValue;
-                      if (value == null) {
-                        setState(() {
-                          _errorMessage = t.qrScreen.errors.unsuccessfullScan;
-                        });
-                        return;
-                      };
-                      setState(() {
-                        _scannedProduct = ParseProductQrUseCase().parse(value);
-                      });
-                    } catch (error) {
-                      setState(() {
-                        if (error is ParsedProductError) {
-                          _errorMessage = error.message;
-                        } else {
-                          _errorMessage = error.toString();
-                        }
-
-                      });
-                    } finally {
-                      await _mobileScannerController.stop();
+        child: Stack(
+          children: [
+            MobileScanner(
+              controller: _mobileScannerController,
+              fit: BoxFit.cover,
+              onDetect: (BarcodeCapture result) async {
+                try {
+                  final String? value = result.barcodes.first.rawValue;
+                  if (value == null) {
+                    setState(() {
+                      _errorMessage = t.qrScreen.errors.unsuccessfullScan;
+                    });
+                    return;
+                  };
+                  setState(() {
+                    _scannedProduct = ParseProductQrUseCase().parse(value);
+                  });
+                } catch (error) {
+                  setState(() {
+                    if (error is ParsedProductError) {
+                      _errorMessage = error.message;
+                    } else {
+                      _errorMessage = error.toString();
                     }
-                  },
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: EdgeInsets.all(context.isLandscape ? 10.w : 20.w),
-                    child: GestureDetector(
-                      onTap: () {
-                        context.pop();
-                      },
-                      behavior: HitTestBehavior.opaque,
-                      child: Icon(Icons.close, size: context.isLandscape ? 18.w : 26.w, color: AppColors.grey),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Column(
-                    mainAxisSize: .min,
-                    children: [
-                      Text(
-                        t.placeTheQr,
-                        style: AppStyles.wixMadeforDisplayW400White(
-                          AppFontSizes.sp18,
-                        ),
-                      ),
-                      SizedBox(height: context.isLandscape ? 10.w : 26.w),
-                      SizedBox(
-                        width: context.isLandscape ? MediaQuery.of(context).size.height * 0.6 : MediaQuery.of(context).size.width * 0.8,
-                        height: context.isLandscape ? MediaQuery.of(context).size.height * 0.6 : MediaQuery.of(context).size.width * 0.8,
-                        child: CustomPaint(painter: ScannerBorderPainter()),
-                      ),
-                    ],
-                  ),
-                ),
-                if (_errorMessage != null)
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                        padding: EdgeInsets.all(20.w),
-                      child: IntrinsicHeight(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.all(4.w),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r),
-                            color: AppColors.white
-                          ),
-                          child: Center(
-                            child: Text(_errorMessage!, style: AppStyles.robotoW400AlmostBlack(AppFontSizes.sp16).copyWith(
-                              color: AppColors.error
-                            ),),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                else if (_scannedProduct != null)
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(padding: EdgeInsetsGeometry.all(20.w),
-                    child: ProductCardFromQr(
-                        product: _scannedProduct!,
-                        onPressed: () async {
-                          final int productId = await IdGenerator.next(AppConstants.productsCollectionName);
-                          context.pop(_scannedProduct?.copyWith(id: productId.toString()));
-                          _scannedProduct = null;
-                        }),),
-                  )
-              ],
+
+                  });
+                } finally {
+                  await _mobileScannerController.stop();
+                }
+              },
             ),
-          ),
-        ),
-
-        /*Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
-          child: Stack(
-            // fit: StackFit.expand,
-            children: [
-
-
-              if (!_isLoading && _scannedProduct == null)
+            Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: EdgeInsets.all(context.isLandscape ? 10.w : 20.w),
+                child: GestureDetector(
+                  onTap: () {
+                    context.pop();
+                  },
+                  behavior: HitTestBehavior.opaque,
+                  child: Icon(Icons.close, size: context.isLandscape ? 18.w : 26.w, color: AppColors.grey),
+                ),
+              ),
+            ),
+            Center(
+              child: Column(
+                mainAxisSize: .min,
+                children: [
+                  Text(
+                    t.placeTheQr,
+                    style: AppStyles.wixMadeforDisplayW400White(
+                      AppFontSizes.sp17,
+                    ),
+                  ),
+                  SizedBox(height: context.isLandscape ? 10.w : 26.w),
+                  SizedBox(
+                    width: context.isLandscape ? MediaQuery.of(context).size.height * 0.6 : MediaQuery.of(context).size.width * 0.8,
+                    height: context.isLandscape ? MediaQuery.of(context).size.height * 0.6 : MediaQuery.of(context).size.width * 0.8,
+                    child: CustomPaint(painter: ScannerBorderPainter()),
+                  ),
+                ],
+              ),
+            ),
+            if (_errorMessage != null)
               Align(
                 alignment: Alignment.bottomCenter,
-                child: TextButton(onPressed: () {
-                  _simulateScan();
-                }, child: const Text("Симулировать QR")),
-              )
-              else if (_isLoading)
-                const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: CircularProgressIndicator(),
-                )
-              else if (!_isLoading && _scannedProduct != null)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ProductCardFromQr(
-                      product: _scannedProduct!,
-                      onPressed: () {
-                        context.pop(_scannedProduct);
-                        _scannedProduct = null;
-                      },
+                child: Padding(
+                    padding: EdgeInsets.all(20.w),
+                  child: IntrinsicHeight(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(4.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(context.isLandscape ? 12.r : 4.r),
+                        color: AppColors.white
+                      ),
+                      child: Center(
+                        child: Text(_errorMessage!, style: AppStyles.robotoW400AlmostBlack(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16).copyWith(
+                          color: AppColors.error
+                        ),
+                        textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
                   ),
-                )
-            ],
-          ),
-        )*/
+                ),
+              )
+            else if (_scannedProduct != null)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(padding: EdgeInsetsGeometry.only(left: 20.w, right: 20.w, bottom: 10.w),
+                child: ProductCardFromQr(
+                    product: _scannedProduct!,
+                    onPressed: () async {
+                      final int productId = await IdGenerator.next(AppConstants.productsCollectionName);
+                      context.pop(_scannedProduct?.copyWith(id: productId.toString()));
+                      _scannedProduct = null;
+                    }),),
+              )
+          ],
+        ),
       ),
     );
   }

@@ -15,7 +15,9 @@
     "save" : "сохранить",
     "delete" : "удалить",
     "signOut" : "выйти",
-    "scan": "сканировать"
+    "scan": "сканировать",
+    "yes": "да",
+    "no": "нет"
   },
   "validatorErrors": {
     "incorrectEmail" : "Некорректно введен Email",
@@ -81,5 +83,8 @@
     "additivies": "добавки",
     "total": "всего"
   },
-  "profile" : "профиль"
+  "profile" : {
+    "name": "профиль",
+    "clearCartItemsBeforeLogout": "Очистить корзину перед выходом из аккаунта?"
+  }
 }

@@ -24,7 +24,7 @@ class SoonInMalinaItems extends StatelessWidget {
       children: [
         Text(
           t.feed.soonInMalina.name,
-          style: AppStyles.wixMadeforDisplayW500AlmostBlack(context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp17).copyWith(
+          style: AppStyles.wixMadeforDisplayW500AlmostBlack(context.isLandscape ? AppFontSizes.sp20 : AppFontSizes.sp17).copyWith(
             color: AppColors.black,
           ),
         ),
@@ -46,7 +46,7 @@ class SoonInMalinaItems extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(t.feed.soonInMalina.titles[index].toCapitalize(),
-                  style: AppStyles.wixMadeforDisplayW400Black(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp12),
+                  style: AppStyles.wixMadeforDisplayW400Black(context.isLandscape ? AppFontSizes.sp20 : AppFontSizes.sp12),
                   ),
                 ),
               ),

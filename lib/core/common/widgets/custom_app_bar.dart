@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(title),
       titleTextStyle: AppStyles.wixMadeforDisplayW700AlmostBlack(
-        AppFontSizes.sp20,
+        context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16,
       ),
       scrolledUnderElevation: 0,
       actions: [
@@ -50,7 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Text(
               actionText,
               style: AppStyles.wixMadeforDisplayW400AlmostBlack(
-                context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14,
+                context.isLandscape ? AppFontSizes.sp16 : AppFontSizes.sp14,
               ),
             ),
             onPressed: onActionPressed,

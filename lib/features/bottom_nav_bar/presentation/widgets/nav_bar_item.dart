@@ -24,7 +24,7 @@ class NavBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      onPressed: onPressed,
+      onPressed: isActive ? null : onPressed,
       padding: EdgeInsets.zero,
       sizeStyle: CupertinoButtonSize.small,
       child: SizedBox(

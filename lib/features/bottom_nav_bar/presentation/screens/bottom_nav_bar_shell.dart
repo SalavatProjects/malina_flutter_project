@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:malina_flutter_project/app/router/app_router.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/features/bottom_nav_bar/presentation/widgets/cart_content.dart';
 import 'package:malina_flutter_project/features/cart/presentation/bloc/cart_cubit.dart';
@@ -65,6 +66,9 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
                   text: t.bottomNavBarContent.feed.toCapitalize(),
                   isActive: currentIndex == 0,
                   onPressed: () {
+                    setState(() {
+                      _isCartContentOpen = false;
+                    });
                     appRouter.goNamed(AppRoutes.feed.name);
                   },
                 ),
@@ -74,10 +78,16 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
                   text: t.bottomNavBarContent.favorites.toCapitalize(),
                   isActive: currentIndex == 1,
                   onPressed: () {
+                    setState(() {
+                      _isCartContentOpen = false;
+                    });
                     appRouter.goNamed(AppRoutes.favorites.name);
                   },
                 ),
                 NavBarScanButton(onPressed: () async {
+                  setState(() {
+                    _isCartContentOpen = false;
+                  });
                   if (currentIndex != 0) {
                     appRouter.goNamed(AppRoutes.feed.name);
                   } else {
@@ -94,6 +104,9 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
                   text: t.bottomNavBarContent.profile.toCapitalize(),
                   isActive: currentIndex == 3,
                   onPressed: () {
+                    setState(() {
+                      _isCartContentOpen = false;
+                    });
                     appRouter.pushNamed(AppRoutes.profile.name);
                   },
                 ),
@@ -112,8 +125,8 @@ class _BottomNavBarShellState extends State<BottomNavBarShell> {
             ),
           ),
           Positioned(
-            right: 10.w,
-            bottom: 60.w,
+            right: context.isLandscape ? 16.w : 10.w,
+            bottom: context.isLandscape ? 40.w : 60.w,
             child: CartContent(
                 isOpen: _isCartContentOpen,
                 onFoodPressed: () {

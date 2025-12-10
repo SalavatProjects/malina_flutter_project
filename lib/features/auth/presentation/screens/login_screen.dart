@@ -118,6 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: AppStyles.robotoW400AlmostBlack(
                               context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14,
                             ).copyWith(color: AppColors.error),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                             SizedBox(height: context.isLandscape ? 14.w : 4.w),

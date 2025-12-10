@@ -52,9 +52,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	String get placeTheQr => 'Поместите QR-код в рамку';
 
 	late final TranslationsCartRu cart = TranslationsCartRu._(_root);
-
-	/// ru: 'профиль'
-	String get profile => 'профиль';
+	late final TranslationsProfileRu profile = TranslationsProfileRu._(_root);
 }
 
 // Path: common
@@ -115,6 +113,12 @@ class TranslationsActionRu {
 
 	/// ru: 'сканировать'
 	String get scan => 'сканировать';
+
+	/// ru: 'да'
+	String get yes => 'да';
+
+	/// ru: 'нет'
+	String get no => 'нет';
 }
 
 // Path: validatorErrors
@@ -227,6 +231,21 @@ class TranslationsCartRu {
 
 	/// ru: 'всего'
 	String get total => 'всего';
+}
+
+// Path: profile
+class TranslationsProfileRu {
+	TranslationsProfileRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ru: 'профиль'
+	String get name => 'профиль';
+
+	/// ru: 'Очистить корзину перед выходом из аккаунта?'
+	String get clearCartItemsBeforeLogout => 'Очистить корзину перед выходом из аккаунта?';
 }
 
 // Path: auth.errors
@@ -350,6 +369,8 @@ extension on Translations {
 			'action.delete' => 'удалить',
 			'action.signOut' => 'выйти',
 			'action.scan' => 'сканировать',
+			'action.yes' => 'да',
+			'action.no' => 'нет',
 			'validatorErrors.incorrectEmail' => 'Некорректно введен Email',
 			'validatorErrors.emptyField' => 'Поле не должно быть пустым',
 			'validatorErrors.minLengthPassword' => ({required int count}) => 'Пароль должен содержать минимум ${count} символов',
@@ -389,7 +410,8 @@ extension on Translations {
 			'cart.noProductsByThisCategory' => ({required String categoty}) => 'Нет товаров в корзине из категории ${categoty}',
 			'cart.additivies' => 'добавки',
 			'cart.total' => 'всего',
-			'profile' => 'профиль',
+			'profile.name' => 'профиль',
+			'profile.clearCartItemsBeforeLogout' => 'Очистить корзину перед выходом из аккаунта?',
 			_ => null,
 		};
 	}

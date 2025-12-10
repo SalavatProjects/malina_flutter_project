@@ -25,7 +25,7 @@ class FeedProductBanner extends StatelessWidget {
       height: 170.w,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 23.w),
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(imagePath)),
+        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
         borderRadius: BorderRadius.circular(context.isLandscape ? 36.r : 12.r),
         color: backgroundColor
       ),
@@ -38,7 +38,7 @@ class FeedProductBanner extends StatelessWidget {
             width: 140.w,
             child: Text(
               subtitle,
-              style: AppStyles.robotoW300Black(context.isLandscape ? AppFontSizes.sp18 : AppFontSizes.sp16),
+              style: AppStyles.robotoW300Black(context.isLandscape ? AppFontSizes.sp20 : AppFontSizes.sp16),
 
             ),
           )

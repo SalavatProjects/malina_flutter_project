@@ -1,5 +1,3 @@
-import 'package:malina_flutter_project/core/common/constants/app_constants.dart';
-import 'package:malina_flutter_project/core/services/id_generator.dart';
 import 'package:malina_flutter_project/features/product/data/datasources/product_local_data_source.dart';
 import 'package:malina_flutter_project/features/product/domain/repositories/product_repository.dart';
 import 'package:malina_flutter_project/features/shared/data/mappers/product_mapper.dart';
