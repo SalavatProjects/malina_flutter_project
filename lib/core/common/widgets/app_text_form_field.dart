@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/core/common/constants/app_constants.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 
 class AppTextFormField extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -40,11 +41,11 @@ class AppTextFormField extends StatelessWidget {
     required this.onSuffixIconTap,
     this.validator,
     this.keyboardType,
-}) : inputFormatters = null;
+  }) : inputFormatters = null;
 
   final OutlineInputBorder _inputBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(4.r),
-      borderSide: BorderSide(width: 1.w, color: AppColors.greyOutline)
+    borderRadius: BorderRadius.circular(4.r),
+    borderSide: BorderSide(width: 1.w, color: AppColors.greyOutline),
   );
 
   @override
@@ -56,27 +57,36 @@ class AppTextFormField extends StatelessWidget {
         controller: textEditingController,
         obscureText: obscureText,
         maxLength: AppConstants.maxTextFieldLength,
-        style: AppStyles.robotoW400AlmostBlack(AppFontSizes.sp16),
+        style: AppStyles.robotoW400AlmostBlack(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16),
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.w,
+          ),
           border: _inputBorder,
           focusedBorder: _inputBorder,
           hintText: hintText,
-          hintStyle: AppStyles.robotoW400GreyMediumDark(AppFontSizes.sp16),
-          suffixIcon: suffixIcon != null ?
-              GestureDetector(
-                onTap: onSuffixIconTap,
-                child: suffixIcon,
-              ) : null,
-        isDense: true,
+          hintStyle: AppStyles.robotoW400GreyMediumDark(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16),
+          suffixIcon: suffixIcon != null
+              ? GestureDetector(onTap: onSuffixIconTap, child: suffixIcon)
+              : null,
+          isDense: true,
+          errorStyle: AppStyles.robotoW400AlmostBlack(
+            context.isLandscape ? AppFontSizes.sp16 : AppFontSizes.sp12,
+          ).copyWith(color: AppColors.error),
         ),
         inputFormatters: inputFormatters,
         validator: validator,
-        buildCounter: (context, {required currentLength,
-          required maxLength, required isFocused}) {
-          return null;
-        },
+        buildCounter:
+            (
+              context, {
+              required currentLength,
+              required maxLength,
+              required isFocused,
+            }) {
+              return null;
+            },
       ),
     );
   }

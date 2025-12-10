@@ -8,7 +8,7 @@ import 'package:malina_flutter_project/features/feed/presentation/widgets/search
 import 'package:malina_flutter_project/features/feed/presentation/widgets/soon_in_malina_items.dart';
 import 'package:malina_flutter_project/gen/strings.g.dart';
 
-import '../../../../gen/assets.gen.dart';
+import 'package:malina_flutter_project/gen/assets.gen.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({super.key});

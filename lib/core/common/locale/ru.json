@@ -65,6 +65,15 @@
       ]
     }
   },
+  "qrScreen":
+  {
+  "errors": {
+    "unsuccessfullScan": "Не удалось распознать QR-код",
+    "notValidQRCodeFormat": "Неверный формать QR-кода",
+    "notValidPrice": "Цена указана неверно",
+    "unknownCategory": "Неизвестная категория: ${category: String}"
+    }
+  },
   "placeTheQr" : "Поместите QR-код в рамку",
   "cart" : {
     "name": "корзина",

@@ -23,6 +23,7 @@ class CartCubit extends Cubit<CartState> {
     emit(const CartState.loading());
     try {
       final items = await cartRepository.getCurrentUserCart();
+      print(items);
       emit(CartState.loaded(items));
     } catch (e) {
       emit(CartState.error(e.toString()));

@@ -6,6 +6,7 @@ import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_buttons.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_text_form_field.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/core/utils/validators/email_validator.dart';
 import 'package:malina_flutter_project/core/utils/validators/empty_field_validator.dart';
@@ -45,6 +46,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final orientation = MediaQuery.of(context).orientation;
+    // print("orientation: ${context.isLandscape}");
     return Scaffold(
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
@@ -59,9 +62,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
+                  height: context.isLandscape ? MediaQuery.of(context).size.width : MediaQuery.of(context).size.height,
                   child: Column(
                     mainAxisSize: .min,
                     mainAxisAlignment: .center,
@@ -72,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onTextChanged: (String value) {},
                         suffixIcon: Icon(
                           Icons.cancel_outlined,
-                          size: 20.w,
+                          size: context.isLandscape ? 14.w : 20.w,
                           color: AppColors.greyMediumDark,
                         ),
                         validator: (String? value) {
@@ -90,6 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _showPassword
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
+                          size: context.isLandscape ? 14.w : 20.w,
                         ),
                         onSuffixIconTap: () {
                           setState(() {
@@ -101,9 +105,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               PasswordValidator.validateMinLength(value!);
                         },
                       ),
-                      SizedBox(height: 4.w,),
+                      SizedBox(height: 4.w),
                       AppTextFormField.password(
-                        textEditingController: _repeatPasswordTextEditingController,
+                        textEditingController:
+                            _repeatPasswordTextEditingController,
                         onTextChanged: (String value) {},
                         hintText: t.auth.repeatPassword.toCapitalize(),
                         obscureText: _showRepeatPassword,
@@ -111,6 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _showRepeatPassword
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
+                          size: context.isLandscape ? 14.w : 20.w,
                         ),
                         onSuffixIconTap: () {
                           setState(() {
@@ -119,10 +125,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         validator: (String? value) {
                           return EmptyFieldValidator.validate(value) ??
-                            PasswordValidator.validateMinLength(value!) ??
-                            PasswordValidator.validatePasswordsMatch(
+                              PasswordValidator.validateMinLength(value!) ??
+                              PasswordValidator.validatePasswordsMatch(
                                 password: _passwordTextEditingController.text,
-                                confirmPassword: value!);
+                                confirmPassword: value!,
+                              );
                         },
                       ),
                       SizedBox(height: 8.w),
@@ -131,20 +138,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if (_formKey.currentState!.validate()) {
                             context.read<AuthCubit>().register(
                               email: _emailTextEditingController.text.trim(),
-                              password: _passwordTextEditingController.text.trim(),
+                              password: _passwordTextEditingController.text
+                                  .trim(),
                             );
                           }
                         },
                         text: t.action.signUp.toCapitalize(),
                       ),
-                  
+
                       if (state is AuthFailure)
                         Padding(
                           padding: EdgeInsetsGeometry.only(top: 16.w),
                           child: Text(
                             state.error.message,
                             style: AppStyles.robotoW400AlmostBlack(
-                              AppFontSizes.sp14,
+                              context.isLandscape
+                                  ? AppFontSizes.sp17
+                                  : AppFontSizes.sp14,
                             ).copyWith(color: AppColors.error),
                           ),
                         ),
@@ -153,8 +163,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       TextButton(
                         onPressed: () {
                           appRouter.goNamed(AppRoutes.login.name);
-                            },
-                        child: Text(t.action.signIn.toCapitalize()),
+                        },
+                        child: Text(
+                          t.action.signIn.toCapitalize(),
+                          style: AppStyles.robotoW400AlmostBlack(
+                            context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16,
+                          ).copyWith(decoration: TextDecoration.underline),
+                        ),
                       ),
                     ],
                   ),
@@ -165,6 +180,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
         },
       ),
     );
-
   }
 }

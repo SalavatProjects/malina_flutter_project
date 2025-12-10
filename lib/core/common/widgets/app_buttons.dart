@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 
 abstract class _AppCupertinoButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -30,12 +31,12 @@ abstract class _AppCupertinoButton extends StatelessWidget {
         // padding: EdgeInsets.symmetric(vertical: 10.w),
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(context.isLandscape ? 124.r : 24.r),
         ),
         child: Center(
           child: Text(
             text,
-            style: textStyle,
+            style: textStyle.copyWith(fontSize: context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14),
           ),
         ),
       ),

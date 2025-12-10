@@ -46,6 +46,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsAuthRu auth = TranslationsAuthRu._(_root);
 	late final TranslationsBottomNavBarContentRu bottomNavBarContent = TranslationsBottomNavBarContentRu._(_root);
 	late final TranslationsFeedRu feed = TranslationsFeedRu._(_root);
+	late final TranslationsQrScreenRu qrScreen = TranslationsQrScreenRu._(_root);
 
 	/// ru: 'Поместите QR-код в рамку'
 	String get placeTheQr => 'Поместите QR-код в рамку';
@@ -197,6 +198,16 @@ class TranslationsFeedRu {
 	late final TranslationsFeedSoonInMalinaRu soonInMalina = TranslationsFeedSoonInMalinaRu._(_root);
 }
 
+// Path: qrScreen
+class TranslationsQrScreenRu {
+	TranslationsQrScreenRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsQrScreenErrorsRu errors = TranslationsQrScreenErrorsRu._(_root);
+}
+
 // Path: cart
 class TranslationsCartRu {
 	TranslationsCartRu._(this._root);
@@ -296,6 +307,27 @@ class TranslationsFeedSoonInMalinaRu {
 	];
 }
 
+// Path: qrScreen.errors
+class TranslationsQrScreenErrorsRu {
+	TranslationsQrScreenErrorsRu._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ru: 'Не удалось распознать QR-код'
+	String get unsuccessfullScan => 'Не удалось распознать QR-код';
+
+	/// ru: 'Неверный формать QR-кода'
+	String get notValidQRCodeFormat => 'Неверный формать QR-кода';
+
+	/// ru: 'Цена указана неверно'
+	String get notValidPrice => 'Цена указана неверно';
+
+	/// ru: 'Неизвестная категория: ${category: String}'
+	String unknownCategory({required String category}) => 'Неизвестная категория: ${category}';
+}
+
 /// The flat map containing all translations for locale <ru>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -348,6 +380,10 @@ extension on Translations {
 			'feed.soonInMalina.titles.3' => 'спорт',
 			'feed.soonInMalina.titles.4' => 'маркет',
 			'feed.soonInMalina.titles.5' => '',
+			'qrScreen.errors.unsuccessfullScan' => 'Не удалось распознать QR-код',
+			'qrScreen.errors.notValidQRCodeFormat' => 'Неверный формать QR-кода',
+			'qrScreen.errors.notValidPrice' => 'Цена указана неверно',
+			'qrScreen.errors.unknownCategory' => ({required String category}) => 'Неизвестная категория: ${category}',
 			'placeTheQr' => 'Поместите QR-код в рамку',
 			'cart.name' => 'корзина',
 			'cart.noProductsByThisCategory' => ({required String categoty}) => 'Нет товаров в корзине из категории ${categoty}',

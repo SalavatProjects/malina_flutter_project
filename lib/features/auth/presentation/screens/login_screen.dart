@@ -5,6 +5,7 @@ import 'package:malina_flutter_project/app/router/app_router.dart';
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_text_form_field.dart';
 import 'package:malina_flutter_project/core/common/widgets/app_buttons.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/core/ext/string_ext.dart';
 import 'package:malina_flutter_project/core/utils/validators/email_validator.dart';
 import 'package:malina_flutter_project/core/utils/validators/empty_field_validator.dart';
@@ -56,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: SingleChildScrollView(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
+                  height: context.isLandscape ? MediaQuery.of(context).size.width : MediaQuery.of(context).size.height,
                   child: Column(
                     mainAxisAlignment: .center,
                     children: [
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTextChanged: (String value) {},
                         suffixIcon: Icon(
                           Icons.cancel_outlined,
-                          size: 20.w,
+                          size: context.isLandscape ? 14.w : 20.w,
                           color: AppColors.greyMediumDark,
                         ),
                         validator: (String? value) {
@@ -84,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _showPassword
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
+                          size: context.isLandscape ? 14.w : 20.w,
                         ),
                         onSuffixIconTap: () {
                           setState(() {
@@ -114,16 +116,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             state.message ?? state.error.message,
                             style: AppStyles.robotoW400AlmostBlack(
-                              AppFontSizes.sp14,
+                              context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp14,
                             ).copyWith(color: AppColors.error),
                           ),
                         ),
-                            SizedBox(height: 4.w),
+                            SizedBox(height: context.isLandscape ? 14.w : 4.w),
                             // TODO: this widget not designed for UI
                             TextButton(
                             onPressed: () {
                               appRouter.goNamed(AppRoutes.register.name);
-                            }, child: Text(t.action.signUp.toCapitalize()))
+                            }, child: Text(t.action.signUp.toCapitalize(), style: AppStyles.robotoW400AlmostBlack(context.isLandscape ? AppFontSizes.sp17 : AppFontSizes.sp16).copyWith(
+                              decoration: TextDecoration.underline
+                            ),))
                     ],
                   ),
                 ),

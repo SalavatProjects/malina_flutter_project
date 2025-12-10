@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 
 class NavBarItem extends StatelessWidget {
   final int index;
@@ -28,13 +29,13 @@ class NavBarItem extends StatelessWidget {
       sizeStyle: CupertinoButtonSize.small,
       child: SizedBox(
         width: 54.w,
-        height: 40.w,
+        height: context.isLandscape ? 30.w : 40.w,
         child: Column(
           mainAxisAlignment: .spaceBetween,
           children: [
             SvgPicture.asset(
               iconPath,
-              width: 25.w,
+              width: context.isLandscape ? 20.w : 25.w,
               colorFilter: ColorFilter.mode(
                 isActive ? AppColors.pink : AppColors.greyLight,
                 BlendMode.srcIn,
@@ -42,7 +43,7 @@ class NavBarItem extends StatelessWidget {
             ),
             Text(
               text,
-              style: AppStyles.wixMadeforDisplayW500White(AppFontSizes.sp10)
+              style: AppStyles.wixMadeforDisplayW500White(context.isLandscape ? AppFontSizes.sp14 : AppFontSizes.sp10)
                   .copyWith(
                 color: isActive ? AppColors.pink : AppColors.greyMedium,
               ),

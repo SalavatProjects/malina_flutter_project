@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:malina_flutter_project/core/common/theme/theme.dart';
+import 'package:malina_flutter_project/core/ext/context_orientation_ext.dart';
 import 'package:malina_flutter_project/gen/assets.gen.dart';
 
 class NavBarScanButton extends StatelessWidget {
@@ -23,7 +24,7 @@ class NavBarScanButton extends StatelessWidget {
       sizeStyle: CupertinoButtonSize.small,
       child: Container(
         width: 60.w,
-        height: 60.w,
+        height: context.isLandscape ? 30.w : 60.w,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.pink,
@@ -33,7 +34,7 @@ class NavBarScanButton extends StatelessWidget {
             isToBack
                 ? Assets.icons.categoryActive.path
                 : Assets.icons.categoryInactive.path,
-            width: 48.w,
+            width: context.isLandscape ? 30.w : 48.w,
             colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
           ),
         ),
